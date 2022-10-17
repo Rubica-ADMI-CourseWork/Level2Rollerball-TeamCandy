@@ -22,7 +22,8 @@ public class PCController : MonoBehaviour
     private void Update()
     {
         ForwardBackAxis();
-        movement = new Vector3(Input.acceleration.x * 4f, Physics.gravity.y, zMove); //get the accelerometer values in the real world  x and y and place them against Unity's x and y
+        var forwardMovement = Camera.main.GetComponent<NewThirdPersonCamera>().GetCameraForwardVector() * zMove;
+        movement = new Vector3(0f, Physics.gravity.y,0f ) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
          //move the pc using the rigidbody by applying a velocity to it
         
     }

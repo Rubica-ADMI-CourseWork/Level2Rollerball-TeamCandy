@@ -56,4 +56,10 @@ public class NewThirdPersonCamera : MonoBehaviour
         cameraOffset.y += heightOffset;
         //transform.position = cameraOffset;
     }
+    public Vector3 GetCameraForwardVector()
+    {
+        Quaternion rot = Quaternion.Euler(0f,xAxisInput, 0f);
+
+        return rot * Vector3.forward;
+    }
 }
