@@ -9,7 +9,7 @@ public class ObstacleBehaviour : MonoBehaviour
         //check if player has entered trigger
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.ResetGame();
+            //GameManagerAura.Instance.ResetGame();
         }
     }
 }
