@@ -12,8 +12,8 @@ public class WhippedCreamPie : MonoBehaviour
 
     private void Awake()
     {
-        whippedcreamPieExplosion.SetActive(false);
-        sphereCollider = GetComponent<Collider>();
+        whippedcreamPieExplosion.SetActive(false); //deactivate it on start
+        sphereCollider = GetComponent<Collider>(); //get the collider attached to the gameobject
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,16 +21,16 @@ public class WhippedCreamPie : MonoBehaviour
         if (collision.collider.CompareTag("Ball"))
         {
             StartCoroutine(ShowAndHideWhippedCreamExplosion());
-            whippedcreamPieVisuals.SetActive(false);
-            sphereCollider.enabled = !sphereCollider.enabled;
-            
+            whippedcreamPieVisuals.SetActive(false); //Deactivate the pie after pc collision
+            sphereCollider.enabled = !sphereCollider.enabled; //Deactivate the pie after pc collision
+
         }
     }
 
     IEnumerator ShowAndHideWhippedCreamExplosion()
     {
-        whippedcreamPieExplosion.SetActive(true);
-        yield return new WaitForSeconds(explosionTimeOnScreen);
-        whippedcreamPieExplosion.SetActive(false);
+        whippedcreamPieExplosion.SetActive(true); //activate the whipped cream splat
+        yield return new WaitForSeconds(explosionTimeOnScreen); //how long it stays on screen before being deactivated
+        whippedcreamPieExplosion.SetActive(false);//deactivate the whipped cream splat
     }
 }

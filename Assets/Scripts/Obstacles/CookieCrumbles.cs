@@ -28,12 +28,11 @@ public class CookieCrumbles : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(timeItTakesToReform);
-            fallingPlatform.SetActive(false);
-            //Debug.Log("I'm falling");
+            fallingPlatform.SetActive(false);            
             yield return new WaitForSeconds(timeItTakesToReform);
             fallingPlatform.SetActive(true);
-            //Debug.Log("I'm reforming");
+            yield return new WaitForSeconds(timeItTakesToReform);
+           
         }
         
     }
