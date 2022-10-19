@@ -2,39 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookieCrumbles : MonoBehaviour
+public class ChocyShoot : MonoBehaviour
 {
-    [Header("CookieCrumbles Variables")]
-    [SerializeField] GameObject fallingPlatform;
-    [SerializeField] float initialTimeBeforeItStartsFalling = 3f;
+    [Header("ChocyShoot Variables")]
+    [SerializeField] GameObject protrudingWall;
+    [SerializeField] float initialTimeBeforeItStartsRising = 3f;
     [SerializeField] float timeItTakesToReform = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FallingAndReformingPlatform());  
-        
+        StartCoroutine(FallingAndReformingWall());
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    IEnumerator FallingAndReformingPlatform()
+    IEnumerator FallingAndReformingWall()
     {
-        yield return new WaitForSeconds(initialTimeBeforeItStartsFalling);
+        yield return new WaitForSeconds(initialTimeBeforeItStartsRising);
 
         while (true)
         {
             yield return new WaitForSeconds(timeItTakesToReform);
-            fallingPlatform.SetActive(false);
+            protrudingWall.SetActive(false);
             //Debug.Log("I'm falling");
             yield return new WaitForSeconds(timeItTakesToReform);
-            fallingPlatform.SetActive(true);
+            protrudingWall.SetActive(true);
             //Debug.Log("I'm reforming");
         }
-        
+
     }
 }
