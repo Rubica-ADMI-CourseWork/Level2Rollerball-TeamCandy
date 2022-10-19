@@ -36,19 +36,22 @@ public class JawbreakerObstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        ballVelocity = rb.velocity.z;
 
-        if (ballVelocity >= maxVelocity)
-        {
-            ballVelocity = maxVelocity;
-        }
-        else if (ballVelocity <= minVelocity)
-        {
-            ballVelocity = maxVelocity;
-        }
+        //directionalMovement = new Vector3(0f, Physics.gravity.y, ballVelocity);
+        //rb.velocity = directionalMovement * jawbreakerSpeed;
 
-        JustMove();
+        //ballVelocity = rb.velocity.z;
+
+        //if (ballVelocity >= maxVelocity)
+        //{
+        //    ballVelocity = maxVelocity;
+        //}
+        //else if (ballVelocity <= minVelocity)
+        //{
+        //    ballVelocity = maxVelocity;
+        //}
+
+        //JustMove();
         
     }
 
