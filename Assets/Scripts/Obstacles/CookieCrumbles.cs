@@ -5,9 +5,9 @@ using UnityEngine;
 public class CookieCrumbles : MonoBehaviour
 {
     [Header("CookieCrumbles Variables")]
-    [SerializeField] GameObject fallingPlatform;
-    [SerializeField] float initialTimeBeforeItStartsFalling = 3f;
-    [SerializeField] float timeItTakesToReform = 3f;
+    [SerializeField] GameObject fallingPlatform; //reference the platform that is falling
+    [SerializeField] float initialTimeBeforeItStartsFalling = 3f; //the time before the falling loop starts
+    [SerializeField] float timeItTakesToReform = 3f; //how long it before the platform is destoryed or reformed
 
     // Start is called before the first frame update
     void Start()
