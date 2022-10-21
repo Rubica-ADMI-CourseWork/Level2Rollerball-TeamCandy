@@ -9,6 +9,8 @@ TagManager:
   - Slide
   - Waypoint
   - Obstacle
+  - Jawbreaker
+  - SpinningLollies
   layers:
   - Default
   - TransparentFX

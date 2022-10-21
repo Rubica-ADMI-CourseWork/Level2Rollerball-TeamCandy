@@ -162,3 +162,6 @@ MonoBehaviour:
   pcSpeed: 5
   forwardTiltAdjust: 8.5
   forwardTiltCutoff: 5
+  rb: {fileID: 0}
+  jawbreakerForce: 100
+  spinningLolliesForce: 50

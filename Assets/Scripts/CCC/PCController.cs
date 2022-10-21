@@ -9,9 +9,14 @@ public class PCController : MonoBehaviour
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
     float zMove;
-    Rigidbody rb; //the rigidbody of the PC
+    public Rigidbody rb; //the rigidbody of the PC
 
     Vector3 movement;
+
+    [Header("PC Pushback from Obstacles")]
+    public float jawbreakerForce = 3f; // force is how forcefully we will push the player away from the obstacle
+    public float spinningLolliesForce = 5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -76,5 +81,32 @@ public class PCController : MonoBehaviour
             }
         }
     }
- 
+
+    void OnCollisionEnter(Collision c)
+    {
+
+        if (c.gameObject.tag == "Jawbreaker")
+        {
+            // Calculate Angle Between the collision point and the player
+            Vector3 dir = c.contacts[0].point - transform.position;
+            // We then get the opposite (-Vector3) and normalize it
+            dir = -dir.normalized;
+            // And finally we add force in the direction of dir and multiply it by force. 
+            // This will push back the player
+            rb.AddForce(dir * jawbreakerForce);
+        }
+
+        //if (c.gameObject.tag == "SpinningLollies")
+        //{
+        //    // Calculate Angle Between the collision point and the player
+        //    Vector3 dir = c.contacts[0].point - transform.position;
+        //    // We then get the opposite (-Vector3) and normalize it
+        //    dir = -dir.normalized;
+        //    // And finally we add force in the direction of dir and multiply it by force. 
+        //    // This will push back the player
+        //    rb.AddForce(dir * spinningLolliesForce);
+        //}
+
+    }
+
 }
