@@ -18,13 +18,9 @@ public class JellyEnemy : MonoBehaviour
     EnemyState currentEnemyState;
 
     [Header("Enemy Variables")]
-    [SerializeField] float decisionDelay = 3f;
+    [SerializeField] float decisionDelay = 1f;
     NavMeshAgent pathfinder;
     Transform target;
-
-    float attackDistanceThreshold = 1.5f;
-    float timeBetweenAttacks = 1;
-    float nextAttackTime;
 
 
     [Header("Enemy Idle/Patrol Variables")]
@@ -33,9 +29,14 @@ public class JellyEnemy : MonoBehaviour
     [SerializeField] Transform[] waypoints;
     int currentWaypoint = 0;
 
+
     [Header("Enemy Attack Variables")]
     Vector3 originalPosition;
     Vector3 attackPosition;
+
+    float attackDistanceThreshold = 1.5f;
+    float timeBetweenAttacks = 1;
+    float nextAttackTime;
 
     float attackSpeed;
     float percent;
@@ -54,10 +55,6 @@ public class JellyEnemy : MonoBehaviour
         //StartCoroutine(UpdatePath());
     }
 
-    void SetDestination()
-    {
-        if (currentEnemyState == EnemyState.Chasing) pathfinder.SetDestination(target.position);
-    }
 
     // Update is called once per frame
     void Update()
@@ -98,6 +95,10 @@ public class JellyEnemy : MonoBehaviour
 
     }
 
+    void SetDestination()
+    {
+        if (currentEnemyState == EnemyState.Chasing) pathfinder.SetDestination(target.position);
+    }
 
     IEnumerator Attack()
     {
