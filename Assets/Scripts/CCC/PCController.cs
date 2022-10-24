@@ -5,9 +5,11 @@ using UnityEngine;
 public class PCController : MonoBehaviour
 {
     [Header("PC Movement Variables")]
-    [SerializeField] float pcSpeed;
+    [SerializeField] float pcSpeed =3f;
+    //[SerializeField] float maxPcSpeed = 5f;
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
+        
     float zMove;
     Rigidbody rb; //the rigidbody of the PC
 
@@ -25,14 +27,13 @@ public class PCController : MonoBehaviour
         ForwardBackAxis();
         var forwardMovement = Camera.main.GetComponent<NewThirdPersonCamera>().GetCameraForwardVector() * zMove;
         movement = new Vector3(0f, Physics.gravity.y,0f ) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
-         
-        
+                       
     }
 
     private void FixedUpdate()
     {
         //move the pc using the rigidbody by applying a velocity to it
-        rb.velocity = movement * pcSpeed;
+        rb.velocity = movement * pcSpeed;       
     }
 
     void ForwardBackAxis()
@@ -78,5 +79,5 @@ public class PCController : MonoBehaviour
         }
     }
 
-    
+
 }

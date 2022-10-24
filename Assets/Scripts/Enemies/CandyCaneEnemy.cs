@@ -40,10 +40,11 @@ public class CandyCaneEnemy : MonoBehaviour
     float positionY; //The position of the enemy in the Y
 
     Vector3 launchDir; //The value gotten after subtracting the position of the enemy from the position of the launch direction object
-
+    bool beingKnocked;
+        
     // Start is called before the first frame update
     void Start()
-    {
+    {        
         pathfinder = GetComponent<NavMeshAgent>();
         InvokeRepeating("SetDestination", 1.5f, decisionDelay);
 
@@ -93,21 +94,10 @@ public class CandyCaneEnemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Ball"))
-        {
-            //currentEnemyState = EnemyState.Attacking;
-            //pathfinder.enabled = false; //Disable the pathfinder before the attack 
-
+        {           
             LaunchPlayer();
-            collision.gameObject.GetComponent<Rigidbody>().AddForce(launchDir * pushingForce);
-           
-            
-
-
-            //Debug.Log("I have collided with Player");
-
-            //currentEnemyState = EnemyState.Chasing;
-            //pathfinder.enabled = true;
-
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(launchDir * pushingForce, ForceMode.Impulse);
+                        
         }
     }
 
@@ -118,8 +108,11 @@ public class CandyCaneEnemy : MonoBehaviour
         positionZ = transform.position.z;
         positionY = transform.position.y;
 
+
         //Launch direction is the difference between our destination and our current position
         launchDir = new Vector3(0f, launchDirectionY - positionY, launchDirectionZ - positionZ);
+                   
+
     }
    
 }
