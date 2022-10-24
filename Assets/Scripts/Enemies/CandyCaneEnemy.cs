@@ -31,7 +31,15 @@ public class CandyCaneEnemy : MonoBehaviour
 
 
     [Header("Enemy Attack Variables")]
-    [SerializeField] float pushingForce = 10f;
+    [SerializeField] float pushingForce = 400f;
+    [SerializeField] Transform launchDirection;
+
+    float launchDirectionZ; //The position of the launchDirection in the Z
+    float launchDirectionY; //The position of the launchDirection in the Y
+    float positionZ; //The position of the enemy in the Z
+    float positionY; //The position of the enemy in the Y
+
+    Vector3 launchDir; //The value gotten after subtracting the position of the enemy from the position of the launch direction object
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +89,7 @@ public class CandyCaneEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, proximityDstFromTarget / 2);
     }
 
-    
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Ball"))
@@ -89,13 +97,29 @@ public class CandyCaneEnemy : MonoBehaviour
             //currentEnemyState = EnemyState.Attacking;
             //pathfinder.enabled = false; //Disable the pathfinder before the attack 
 
-            collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.up * pushingForce;
+            LaunchPlayer();
+            collision.gameObject.GetComponent<Rigidbody>().AddForce(launchDir * pushingForce);
+           
+            
 
-            Debug.Log("I have collided with Player");
+
+            //Debug.Log("I have collided with Player");
 
             //currentEnemyState = EnemyState.Chasing;
             //pathfinder.enabled = true;
 
         }
     }
+
+    void LaunchPlayer()
+    {
+        launchDirectionZ = launchDirection.position.z;
+        launchDirectionY = launchDirection.position.y;
+        positionZ = transform.position.z;
+        positionY = transform.position.y;
+
+        //Launch direction is the difference between our destination and our current position
+        launchDir = new Vector3(0f, launchDirectionY - positionY, launchDirectionZ - positionZ);
+    }
+   
 }
