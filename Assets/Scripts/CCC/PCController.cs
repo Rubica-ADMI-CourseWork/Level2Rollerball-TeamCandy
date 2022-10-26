@@ -10,7 +10,9 @@ public class PCController : MonoBehaviour
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
 
-    
+    [Header("Level Checkpoint Variables")]
+    List<Transform> levelCheckpoints;
+
     [Header("Select which physics force to use to move the ball")]
     [SerializeField] ForceType forceType;
 
@@ -24,6 +26,8 @@ public class PCController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        levelCheckpoints = new List<Transform>();
         
     }
 
@@ -112,13 +116,21 @@ public class PCController : MonoBehaviour
     {
         if (c.tag == "Death")
         {
-            Destroy(gameObject, 1f);
+            OnDeath();
         }
 
         if (c.tag == "LevelCheckpoint")
         {
-            CandyGameManager.instance.SetCheckpoint(c.transform.position);
+            Transform newCheckpoint = c.gameObject.transform; //store the collided checkpoint
+            levelCheckpoints.Add(newCheckpoint); //add it to the list
         }
     }
 
+    void OnDeath()
+    {
+        int i = levelCheckpoints.Count - 1;
+        Transform recentCheckpoint = levelCheckpoints[i];
+        gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
+                
+    }
 }
