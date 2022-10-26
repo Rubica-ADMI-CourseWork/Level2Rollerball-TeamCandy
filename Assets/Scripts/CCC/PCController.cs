@@ -5,11 +5,14 @@ using UnityEngine;
 public class PCController : MonoBehaviour
 {
     [Header("PC Movement Variables")]
-    [SerializeField] float pcSpeed =3f;
+    [SerializeField] float pcSpeed = 3f;
     //[SerializeField] float maxPcSpeed = 5f;
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
-        
+
+    [Header("Select which physics force to use to move the ball")]
+    [SerializeField] ForceType forceType;
+
     float zMove;
     Rigidbody rb; //the rigidbody of the PC
 
@@ -26,14 +29,39 @@ public class PCController : MonoBehaviour
     {
         ForwardBackAxis();
         var forwardMovement = Camera.main.GetComponent<NewThirdPersonCamera>().GetCameraForwardVector() * zMove;
-        movement = new Vector3(0f, Physics.gravity.y,0f ) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
-                       
+        movement = new Vector3(0f, Physics.gravity.y, 0f) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
+
     }
 
     private void FixedUpdate()
     {
+        //Determine the physics force to apply to ball based on the 'ForceType' Selected
+        switch (forceType)
+        {
+            case ForceType.AccelerationForce:
+                rb.AddForce(movement * pcSpeed, ForceMode.Acceleration);
+                break;
+            case ForceType.PushForce:
+                rb.AddForce(movement * pcSpeed, ForceMode.Force);
+                break;
+            case ForceType.VelocityForce:
+                rb.AddForce(movement * pcSpeed, ForceMode.VelocityChange);
+                break;
+            case ForceType.TorqueForce:
+                rb.AddTorque(movement * pcSpeed, ForceMode.Acceleration);
+                break;
+            case ForceType.ImpulseForce:
+                rb.AddForce(movement * pcSpeed, ForceMode.Impulse);
+                break;
+            default:
+                rb.velocity = movement * pcSpeed;
+                break;
+
+        }
         //move the pc using the rigidbody by applying a velocity to it
-        rb.velocity = movement * pcSpeed;       
+
+
+
     }
 
     void ForwardBackAxis()
