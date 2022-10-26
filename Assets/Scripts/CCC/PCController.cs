@@ -10,6 +10,7 @@ public class PCController : MonoBehaviour
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
 
+    
     [Header("Select which physics force to use to move the ball")]
     [SerializeField] ForceType forceType;
 
@@ -23,6 +24,7 @@ public class PCController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
 
     private void Update()
@@ -106,5 +108,17 @@ public class PCController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.tag == "Death")
+        {
+            Destroy(gameObject, 1f);
+        }
+
+        if (c.tag == "LevelCheckpoint")
+        {
+            CandyGameManager.instance.SetCheckpoint(c.transform.position);
+        }
+    }
 
 }

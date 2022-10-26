@@ -40,7 +40,7 @@ public class CandyCaneEnemy : MonoBehaviour
     float positionY; //The position of the enemy in the Y
 
     Vector3 launchDir; //The value gotten after subtracting the position of the enemy from the position of the launch direction object
-    bool beingKnocked;
+
         
     // Start is called before the first frame update
     void Start()

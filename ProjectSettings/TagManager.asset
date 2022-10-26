@@ -11,6 +11,8 @@ TagManager:
   - Obstacle
   - Jawbreaker
   - SpinningLollies
+  - LevelCheckpoint
+  - Death
   layers:
   - Default
   - TransparentFX

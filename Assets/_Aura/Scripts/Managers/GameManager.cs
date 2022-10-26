@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManagerAura : MonoBehaviour
+public class GameManager: MonoBehaviour
 {
     [Tooltip("How long to wait before resetting the scene")]
     [SerializeField] float timeBeforeReset;
