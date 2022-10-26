@@ -56,7 +56,6 @@ public class PCController : MonoBehaviour
             default:
                 rb.velocity = movement * pcSpeed;
                 break;
-
         }
         //move the pc using the rigidbody by applying a velocity to it
 
