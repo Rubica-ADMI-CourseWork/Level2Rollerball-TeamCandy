@@ -10,8 +10,6 @@ public class PCController : MonoBehaviour
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
 
-    [Header("Level Checkpoint Variables")]
-    List<Transform> levelCheckpoints;
 
     [Header("Select which physics force to use to move the ball")]
     [SerializeField] ForceType forceType;
@@ -20,6 +18,14 @@ public class PCController : MonoBehaviour
     Rigidbody rb; //the rigidbody of the PC
 
     Vector3 movement;
+
+
+    [Header("Level Checkpoint Variables")]
+    List<Transform> levelCheckpoints;
+
+    [Header("Special Ability Variables")]
+    [SerializeField] GameObject projectile;
+    [SerializeField] float bulletSpeed;
 
 
     // Start is called before the first frame update
@@ -36,6 +42,8 @@ public class PCController : MonoBehaviour
         ForwardBackAxis();
         var forwardMovement = Camera.main.GetComponent<NewThirdPersonCamera>().GetCameraForwardVector() * zMove;
         movement = new Vector3(0f, Physics.gravity.y, 0f) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
+
+        Shooting();
 
     }
 
@@ -128,6 +136,7 @@ public class PCController : MonoBehaviour
         if(c.tag == "FinalLevelCheckpoint")
         {
             UIManager.instance.victoryScreen.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -137,5 +146,21 @@ public class PCController : MonoBehaviour
         Transform recentCheckpoint = levelCheckpoints[i];
         gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
                 
+    }
+
+    void Shooting()
+    {
+        if (Input.touchCount > 0)
+        {
+            if (Input.GetTouch (0).phase == TouchPhase.Began)
+            {
+                Vector2 touchPos = Camera.main.ScreenToWorldPoint (Input.GetTouch(0).position);
+                Vector2 dir = touchPos - (new Vector2 (transform.position.x, transform.position.y));
+                dir.Normalize ();
+
+                GameObject bullet = Instantiate (projectile, transform.position, Quaternion.identity) as GameObject;
+                bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
+            }
+        }
     }
 }

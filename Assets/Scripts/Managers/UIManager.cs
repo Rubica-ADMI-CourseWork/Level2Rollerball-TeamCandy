@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
 
     public void NextLevelButton()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -58,6 +59,7 @@ public class UIManager : MonoBehaviour
 
     public void MainMenuButton()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 

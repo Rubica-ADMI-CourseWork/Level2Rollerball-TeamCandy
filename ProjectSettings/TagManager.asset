@@ -13,6 +13,7 @@ TagManager:
   - SpinningLollies
   - LevelCheckpoint
   - Death
+  - FinalLevelCheckpoint
   layers:
   - Default
   - TransparentFX
