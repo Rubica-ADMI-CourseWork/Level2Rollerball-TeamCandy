@@ -124,6 +124,11 @@ public class PCController : MonoBehaviour
             Transform newCheckpoint = c.gameObject.transform; //store the collided checkpoint
             levelCheckpoints.Add(newCheckpoint); //add it to the list
         }
+
+        if(c.tag == "FinalLevelCheckpoint")
+        {
+            UIManager.instance.victoryScreen.SetActive(true);
+        }
     }
 
     void OnDeath()

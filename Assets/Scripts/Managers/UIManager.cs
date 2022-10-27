@@ -1,0 +1,102 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class UIManager : MonoBehaviour
+{
+    public static UIManager instance;
+
+    [Header("UI Game Panels Variables")]
+    public GameObject victoryScreen;
+    public GameObject pausePanel;
+
+    bool isPaused = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        victoryScreen.SetActive(false);
+        pausePanel.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void ExitGame()
+    {
+
+        Application.Quit();
+    }
+
+    public void NextLevelButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
+    public void ReplayButton()
+    {
+        Time.timeScale = 1f;
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+    }
+
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void HighScoreButton()
+    {
+        SceneManager.LoadScene("HighScore");
+    }
+
+    public void MuteToggle(bool isMuted)
+    {
+        if (isMuted)
+        {
+            AudioListener.volume = 0;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+        }
+    }
+
+    public void PlayGameButton()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void PauseGameButton()
+    {
+        if (isPaused)
+        {
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        else
+        {
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+    }
+}

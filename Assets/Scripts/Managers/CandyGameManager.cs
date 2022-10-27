@@ -29,26 +29,14 @@ public class CandyGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SpawnPlayer(checkpoint);
-        currentPlayer = player;
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!currentPlayer)
-        {
-            SpawnPlayer(checkpoint);
-        }
+
     }
 
-    void SpawnPlayer(Vector3 spawnPos)
-    {
-        currentPlayer = Instantiate(player, spawnPos, Quaternion.identity) as GameObject;
-    }
-
-    public void SetCheckpoint(Vector3 cp)
-    {
-        checkpoint = cp;
-    }
+   
 }
