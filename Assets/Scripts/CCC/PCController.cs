@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PCController : MonoBehaviour
@@ -9,6 +10,7 @@ public class PCController : MonoBehaviour
     //[SerializeField] float maxPcSpeed = 5f;
     [SerializeField] float forwardTiltAdjust = 8.5f;
     [SerializeField] float forwardTiltCutoff = 5f;
+
 
 
     [Header("Select which physics force to use to move the ball")]
@@ -23,9 +25,10 @@ public class PCController : MonoBehaviour
     [Header("Level Checkpoint Variables")]
     List<Transform> levelCheckpoints;
 
-    [Header("Special Ability Variables")]
-    [SerializeField] GameObject projectile;
-    [SerializeField] float bulletSpeed;
+
+    [Header("Score Variables")]
+    public int score;
+
 
 
     // Start is called before the first frame update
@@ -34,7 +37,9 @@ public class PCController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         levelCheckpoints = new List<Transform>();
-        
+
+        score = 0; // at the beginning score is 0
+
     }
 
     private void Update()
@@ -42,9 +47,7 @@ public class PCController : MonoBehaviour
         ForwardBackAxis();
         var forwardMovement = Camera.main.GetComponent<NewThirdPersonCamera>().GetCameraForwardVector() * zMove;
         movement = new Vector3(0f, Physics.gravity.y, 0f) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
-
-        Shooting();
-
+               
     }
 
     private void FixedUpdate()
@@ -120,8 +123,27 @@ public class PCController : MonoBehaviour
         }
     }
 
+   
     private void OnTriggerEnter(Collider c)
     {
+        if(c.tag == "RegularPickup")
+        {
+            score += 1; //increase the score count by 1
+            UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+            UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+
+            Destroy(c.gameObject); //Destroy the pickup after collision
+        }
+
+        if(c.tag == "SpecialPickup")
+        {
+            score += 5; //increase the score count by 5
+            UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+            UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+
+            Destroy(c.gameObject); //Destroy the pickup after collision
+        }
+
         if (c.tag == "Death")
         {
             OnDeath();
@@ -148,19 +170,5 @@ public class PCController : MonoBehaviour
                 
     }
 
-    void Shooting()
-    {
-        if (Input.touchCount > 0)
-        {
-            if (Input.GetTouch (0).phase == TouchPhase.Began)
-            {
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint (Input.GetTouch(0).position);
-                Vector2 dir = touchPos - (new Vector2 (transform.position.x, transform.position.y));
-                dir.Normalize ();
-
-                GameObject bullet = Instantiate (projectile, transform.position, Quaternion.identity) as GameObject;
-                bullet.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
-            }
-        }
-    }
+    
 }

@@ -20,8 +20,16 @@ public class NewThirdPersonCamera : MonoBehaviour
     //cache of rotation input along xAxis of accelerometer
     float xAxisInput;
 
+    [Header("Special Ability Variables")]
+    [SerializeField] Transform childProjectileLaunchPosition;
+    Vector3 projectilePosition;
+
+
+
     private void Update()
     {
+        SetProjectileLaunchPosition();
+
         //Positioning the camera at target position and add a height
         SetPositionAndHeightOffset();
 
@@ -48,7 +56,7 @@ public class NewThirdPersonCamera : MonoBehaviour
         transform.LookAt(cameraOffset);
 
 
-
+        
     }
     private void SetPositionAndHeightOffset()
     {
@@ -61,5 +69,11 @@ public class NewThirdPersonCamera : MonoBehaviour
         Quaternion rot = Quaternion.Euler(0f,xAxisInput, 0f);
 
         return rot * Vector3.forward;
+    }
+
+    void SetProjectileLaunchPosition()
+    {
+        projectilePosition = childProjectileLaunchPosition.position;
+        projectilePosition = new Vector3(target.transform.position.x, (target.transform.position.y + 0.5f), (target.transform.position.z + 2f));
     }
 }

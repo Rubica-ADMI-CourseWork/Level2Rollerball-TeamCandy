@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8586841205653821132}
   m_Layer: 0
   m_Name: PC
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,9 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09401b5258f324649a367447a8df805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pcSpeed: 5
+  pcSpeed: 0.05
   forwardTiltAdjust: 8.5
   forwardTiltCutoff: 5
-  rb: {fileID: 0}
-  jawbreakerForce: 100
-  spinningLolliesForce: 50

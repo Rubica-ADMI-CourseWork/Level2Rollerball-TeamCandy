@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,11 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
 
     bool isPaused = false;
+
+
+    [Header("ScoreVariables")]
+    public TMP_Text scoreText;
+    public TMP_Text scoreVictoryScreenText;
 
     private void Awake()
     {
