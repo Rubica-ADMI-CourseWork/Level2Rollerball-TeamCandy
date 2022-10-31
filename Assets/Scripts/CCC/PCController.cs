@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class PCController : MonoBehaviour
 {
+    public enum AmmoStates
+    {
+        NoBullets,
+        StickyandLiquorice,
+        PopRock,
+        SourSplash
+    }
+
+    public AmmoStates currentAmmoState;
+
     [Header("PC Variables")] 
     Rigidbody rb;
 
@@ -42,19 +52,39 @@ public class PCController : MonoBehaviour
 
     private void Update()
     {
-        //Shooting();
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 30f))
-        {
-            //Debug.Log(hit.point);
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                Launch(hit.point);
                 
-            }
-                        
+        switch (currentAmmoState)
+        {
+            case AmmoStates.NoBullets:
+
+                break;
+
+            case AmmoStates.StickyandLiquorice:
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, 30f))
+                {
+                    //Debug.Log(hit.point);
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Launch(hit.point);
+
+                    }
+
+                }
+
+                break;
+
+            case AmmoStates.PopRock:
+
+                Shooting();
+
+                break;
+
+                case AmmoStates.SourSplash:
+
+                break;
         }
                 
     }

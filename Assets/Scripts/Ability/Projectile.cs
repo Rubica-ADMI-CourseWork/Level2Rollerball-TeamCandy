@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour
     public GameObject stickyAmmoPrefab;
     GameObject stickyAmmo;
 
+    public GameObject bridgeAmmoPrefab;
+    GameObject bridgeAmmo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,16 @@ public class Projectile : MonoBehaviour
                         
             Destroy(gameObject);
                        
+        }
+
+        if (collision.gameObject.CompareTag("Bridge"))
+        {
+           bridgeAmmo = Instantiate(bridgeAmmoPrefab, collision.transform.position, Quaternion.identity) as GameObject;
+
+           Destroy (collision.gameObject);
+
+           Destroy (gameObject);
+
         }
     }
         

@@ -41,6 +41,9 @@ public class JellyEnemy : MonoBehaviour
     float attackSpeed;
     float percent;
 
+    public bool stick = false;
+    public GameObject temp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -93,6 +96,14 @@ public class JellyEnemy : MonoBehaviour
 
         }
 
+        if(stick && temp == null)
+        {
+            stick = false;
+            StopAllCoroutines();
+            pathfinder.enabled = true;
+            
+        }
+       
     }
 
     void SetDestination()
@@ -145,5 +156,27 @@ public class JellyEnemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, proximityDstFromTarget/2);
     }
 
-       
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.tag == "Sticky")
+        {
+            //StartCoroutine(StayOnTheSpot());
+            //transform.parent = c.transform;
+            stick = true;
+            pathfinder.enabled=false;
+
+            temp = c.gameObject;
+        }
+                
+    }
+
+    IEnumerator StayOnTheSpot()
+    {
+        
+        pathfinder.enabled = false;
+        yield return new WaitForSeconds(5f);
+        pathfinder.enabled = true;
+
+        stick = false;
+    }
 }

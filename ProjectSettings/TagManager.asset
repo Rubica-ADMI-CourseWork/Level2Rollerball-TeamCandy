@@ -19,6 +19,7 @@ TagManager:
   - Ground
   - Sticky
   - JellyEnemy
+  - Bridge
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - Projectile
   - Ball
   - Sticky
-  - 
-  - 
+  - BridgeSpawner
+  - Bridge
   - 
   - 
   - 

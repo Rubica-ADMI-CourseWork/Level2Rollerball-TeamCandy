@@ -23,11 +23,5 @@ public class StickyAmmo : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider c)
-    {
-        if(c.tag == "JellyEnemy")
-        {
-            Debug.Log("I have collided with enemy");
-        }
-    }
+    
 }
