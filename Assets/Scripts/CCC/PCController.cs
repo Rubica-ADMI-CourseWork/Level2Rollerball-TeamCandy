@@ -5,23 +5,21 @@ using UnityEngine;
 
 public class PCController : MonoBehaviour
 {
-    [Header("PC Movement Variables")]
-    [SerializeField] float pcSpeed = 3f;
-    //[SerializeField] float maxPcSpeed = 5f;
-    [SerializeField] float forwardTiltAdjust = 8.5f;
-    [SerializeField] float forwardTiltCutoff = 5f;
+    [Header("PC Variables")] 
+    Rigidbody rb;
 
+    [Header("Special Ability Variables")]
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] float bulletSpeed;
 
+    GameObject clone; //the bullet being instantiated
 
-    [Header("Select which physics force to use to move the ball")]
-    [SerializeField] ForceType forceType;
+    public float curveHight = 25f;
+    public float gravity = -18f;
+        
+    Vector3 dir; //The direction we want the bullet to follow
 
-    float zMove;
-    Rigidbody rb; //the rigidbody of the PC
-
-    Vector3 movement;
-
-
+    
     [Header("Level Checkpoint Variables")]
     List<Transform> levelCheckpoints;
 
@@ -44,86 +42,87 @@ public class PCController : MonoBehaviour
 
     private void Update()
     {
-        ForwardBackAxis();
-        var forwardMovement = Camera.main.GetComponent<NewThirdPersonCamera>().GetCameraForwardVector() * zMove;
-        movement = new Vector3(0f, Physics.gravity.y, 0f) + forwardMovement; //get the accelerometer values in the real world  x and y and place them against Unity's x and y
-               
-    }
+        //Shooting();
 
-    private void FixedUpdate()
-    {
-        //Determine the physics force to apply to ball based on the 'ForceType' Selected
-        switch (forceType)
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 30f))
         {
-            case ForceType.AccelerationForce:
-                rb.AddForce(movement * pcSpeed, ForceMode.Acceleration);
-                break;
-            case ForceType.PushForce:
-                rb.AddForce(movement * pcSpeed, ForceMode.Force);
-                break;
-            case ForceType.VelocityForce:
-                rb.AddForce(movement * pcSpeed, ForceMode.VelocityChange);
-                break;
-            case ForceType.TorqueForce:
-                rb.AddTorque(movement * pcSpeed, ForceMode.Acceleration);
-                break;
-            case ForceType.ImpulseForce:
-                rb.AddForce(movement * pcSpeed, ForceMode.Impulse);
-                break;
-            default:
-                rb.velocity = movement * pcSpeed;
-                break;
-        }
-        //move the pc using the rigidbody by applying a velocity to it
+            //Debug.Log(hit.point);
 
-
-
-    }
-
-    void ForwardBackAxis()
-    {
-        //records whether movement is forward or back, Forward = 1, Back = -1
-        zMove = 0f;
-
-        //Get's input from the accelerometer
-        float forwardBackMovement = Input.acceleration.y;
-
-        //scale movement by a factor of 10
-        float scaledForwardBackMovement = forwardBackMovement * 10f;
-
-        //cancel out all rotation past zero(device flat on the table)
-        if (scaledForwardBackMovement > 0)
-        {
-            scaledForwardBackMovement = 0;
-        }
-
-        //only work with positive values
-        scaledForwardBackMovement = Mathf.Abs(scaledForwardBackMovement);
-
-
-        //cut of values less than tilt cutoff as these the device ergonomics at that angle
-        //are undesirable
-        if (scaledForwardBackMovement < forwardTiltCutoff)
-        {
-            scaledForwardBackMovement = 0;
-            zMove = 0f;
-        }
-        else if (scaledForwardBackMovement > forwardTiltCutoff)
-        {
-            //use the forwardTiltAdjust to determine forward and back movement
-            //forward zMove = 1; backward zMove = -1;
-            if (scaledForwardBackMovement < forwardTiltAdjust)
+            if (Input.GetMouseButtonDown(0))
             {
-                zMove = 1;
+                Launch(hit.point);
+                
             }
-            else
+                        
+        }
+                
+    }
+
+
+    void Shooting()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 30f))
+        {
+            Debug.Log(hit.point);
+            
+            if (Input.GetMouseButtonDown(0))
             {
-                zMove = -1;
+
+                GameObject bullet = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
+
+                dir = hit.point - transform.position;
+                Vector3 newDir = dir.normalized;
+
+
+                bullet.GetComponent<Rigidbody>().velocity = newDir * bulletSpeed;
             }
         }
+
     }
 
-   
+    void Launch(Vector3 target)
+    {
+
+        clone = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
+
+        clone.GetComponent<Rigidbody>().AddForce(Vector3.up * gravity);
+
+        clone.GetComponent<Rigidbody>().velocity = CalculateLaunchData(target).initialVelocity;
+
+        
+    }
+
+    LaunchData CalculateLaunchData(Vector3 target)
+    {
+        float displacementY = target.y - transform.position.y;
+        Vector3 displacementXZ = new Vector3(target.x - transform.position.x, 0, target.z - transform.position.z);
+        float time = Mathf.Sqrt(-2 * curveHight / gravity) + Mathf.Sqrt(2 * (displacementY - curveHight) / gravity);
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * curveHight);
+        Vector3 velocityXZ = displacementXZ / time;
+
+        return new LaunchData(velocityXZ + velocityY * -Mathf.Sign(gravity), time);
+
+        
+    }
+
+    struct LaunchData
+    {
+        public readonly Vector3 initialVelocity;
+        public readonly float timeToTarget;
+
+        public LaunchData(Vector3 initialVelocity, float timeToTarget)
+        {
+            this.initialVelocity = initialVelocity;
+            this.timeToTarget = timeToTarget;
+        }
+
+    }
+
+      
+
     private void OnTriggerEnter(Collider c)
     {
         if(c.tag == "RegularPickup")

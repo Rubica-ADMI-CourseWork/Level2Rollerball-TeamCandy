@@ -20,15 +20,15 @@ public class NewThirdPersonCamera : MonoBehaviour
     //cache of rotation input along xAxis of accelerometer
     float xAxisInput;
 
-    [Header("Special Ability Variables")]
-    [SerializeField] Transform childProjectileLaunchPosition;
-    Vector3 projectilePosition;
+    //[Header("Special Ability Variables")]
+    //[SerializeField] Transform childProjectileLaunchPosition;
+    //Vector3 projectilePosition;
 
 
 
     private void Update()
     {
-        SetProjectileLaunchPosition();
+        //SetProjectileLaunchPosition();
 
         //Positioning the camera at target position and add a height
         SetPositionAndHeightOffset();
@@ -71,9 +71,9 @@ public class NewThirdPersonCamera : MonoBehaviour
         return rot * Vector3.forward;
     }
 
-    void SetProjectileLaunchPosition()
-    {
-        projectilePosition = childProjectileLaunchPosition.position;
-        projectilePosition = new Vector3(target.transform.position.x, (target.transform.position.y + 0.5f), (target.transform.position.z + 2f));
-    }
+    //void SetProjectileLaunchPosition()
+    //{
+    //    projectilePosition = childProjectileLaunchPosition.position;
+    //    projectilePosition = new Vector3(target.transform.position.x, (target.transform.position.y + 0.5f), (target.transform.position.z + 2f));
+    //}
 }

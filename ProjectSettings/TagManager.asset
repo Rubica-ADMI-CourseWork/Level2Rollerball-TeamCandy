@@ -16,6 +16,9 @@ TagManager:
   - FinalLevelCheckpoint
   - RegularPickup
   - SpecialPickup
+  - Ground
+  - Sticky
+  - JellyEnemy
   layers:
   - Default
   - TransparentFX
@@ -23,9 +26,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Projectile
+  - Ball
+  - Sticky
   - 
   - 
   - 

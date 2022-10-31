@@ -144,4 +144,6 @@ public class JellyEnemy : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, proximityDstFromTarget/2);
     }
+
+       
 }

@@ -6,7 +6,7 @@ using UnityEngine.ProBuilder;
 public class SpecialAbility : MonoBehaviour
 {
     [Header("Special Ability Variables")]
-    [SerializeField] GameObject launchPosition;
+    //[SerializeField] GameObject launchPoint;
     [SerializeField] GameObject projectile;
     [SerializeField] float bulletSpeed;
     
@@ -23,25 +23,31 @@ public class SpecialAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shooting();
+        //Shooting();
     }
 
     void Shooting()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
-        if (Input.GetMouseButtonDown(0))
+        if(Physics.Raycast(ray, out RaycastHit hit, 30f))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction * 10, Color.cyan);
+            Debug.Log( hit.point);
 
-                        
-            if (Physics.Raycast(ray, out RaycastHit hit, 30f))
+            if (Input.GetMouseButtonDown(0))
             {
-                dir = hit.point - launchPosition.transform.position;
-            }
+                
+                GameObject bullet = Instantiate(projectile, new Vector3 (transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
 
-            GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
-            bullet.GetComponent<Rigidbody>().AddForce(dir * bulletSpeed, ForceMode.Impulse);
+                dir = hit.point - transform.position;
+                Vector3 newDir = dir.normalized;
+
+                
+                bullet.GetComponent<Rigidbody>().velocity = newDir * bulletSpeed;
+            }
         }
+                      
     }
+
+
 }
