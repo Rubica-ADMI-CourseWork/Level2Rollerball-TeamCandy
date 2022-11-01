@@ -25,6 +25,10 @@ public class CandyCaneEnemy : MonoBehaviour
     public bool stick = false;
     public GameObject temp;
 
+    public GameObject candyCaneEnemyVisuals;
+    Collider capsuleCollider; //Access the attached collider
+
+    public float timeBeforeRespawn = 10f;
 
     [Header("Enemy Idle/Patrol Variables")]
     [SerializeField] float proximityDstFromTarget = 10f;
@@ -48,7 +52,9 @@ public class CandyCaneEnemy : MonoBehaviour
         
     // Start is called before the first frame update
     void Start()
-    {        
+    {
+        capsuleCollider = GetComponent<Collider>(); //get the collider
+
         pathfinder = GetComponent<NavMeshAgent>();
         InvokeRepeating("SetDestination", 1.5f, decisionDelay);
 
@@ -145,6 +151,25 @@ public class CandyCaneEnemy : MonoBehaviour
 
             temp = c.gameObject;
         }
+
+        if (c.tag == "Sour")
+        {
+            StartCoroutine(DestroyThenRespawnEnemies());
+        }
+
+    }
+
+    IEnumerator DestroyThenRespawnEnemies()
+    {
+        candyCaneEnemyVisuals.SetActive(false); //Deactivate the visuals
+        capsuleCollider.enabled = false; //Deactivate the box collider
+        pathfinder.enabled = false;
+
+        yield return new WaitForSeconds(timeBeforeRespawn); //Wait sometime before respawning
+
+        candyCaneEnemyVisuals.SetActive(true); //Activate the visuals
+        capsuleCollider.enabled = true; //Activate the box collider
+        pathfinder.enabled = true;
 
     }
 

@@ -84,13 +84,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09401b5258f324649a367447a8df805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAmmoState: 1
-  bulletSpeed: 20
+  currentAmmoState: 2
+  bulletSpeed: 10
   projectilePrefab: {fileID: 7363774356823232242, guid: 868e866252aa8484a911386768a9b808,
     type: 3}
   curveHight: 3
   gravity: -10
   popRockProjectilePrefab: {fileID: 7363774356823232242, guid: 63d273c325845cb4a8074a6e3fc2a7ea,
+    type: 3}
+  pushingForce: 5
+  whenToLaunch: 1.5
+  verticalLaunchOffset: 5
+  horizontalLaunchOffset: 1
+  sourSplashProjectilePrefab: {fileID: 7363774356823232242, guid: a741c568713b6524e94ee1262265e539,
     type: 3}
   score: 0
 --- !u!1 &2151384204395174171
