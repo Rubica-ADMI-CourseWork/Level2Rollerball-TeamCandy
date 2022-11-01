@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2151384204179005300
+--- !u!1 &7363774356823232242
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,61 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2151384204179005305}
-  - component: {fileID: 2151384204179005302}
-  - component: {fileID: 2151384204179005303}
-  - component: {fileID: 2151384204179005304}
-  m_Layer: 7
-  m_Name: PC
-  m_TagString: Ball
+  - component: {fileID: 7363774356823232245}
+  - component: {fileID: 7363774356823232247}
+  - component: {fileID: 7363774356823232244}
+  - component: {fileID: 832193161065237756}
+  m_Layer: 6
+  m_Name: PopRockProjectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2151384204179005305
+--- !u!4 &7363774356823232245
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204179005300}
+  m_GameObject: {fileID: 7363774356823232242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2151384204395174174}
+  - {fileID: 7363774357378455288}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2151384204179005302
-MonoBehaviour:
+--- !u!135 &7363774356823232247
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204179005300}
+  m_GameObject: {fileID: 7363774356823232242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7be51abc537b6d4cb282c281d5fd498, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputReceiver: {fileID: 0}
-  speedModifier: 5
-  sideSpeedModifier: 10
-  forwardMovementForceType: 0
-  sideMovementForceType: 2
-  rightVectorType: 0
-  forwardVectorType: 0
-  cameraControls: {fileID: 0}
-  movementFocus: {fileID: 2151384204395174170}
---- !u!54 &2151384204179005303
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!54 &7363774356823232244
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204179005300}
+  m_GameObject: {fileID: 7363774356823232242}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -72,28 +64,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2151384204179005304
+--- !u!114 &832193161065237756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204179005300}
+  m_GameObject: {fileID: 7363774356823232242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09401b5258f324649a367447a8df805e, type: 3}
+  m_Script: {fileID: 11500000, guid: c5a6a019b5dcec24aa5f123034092a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAmmoState: 1
-  bulletSpeed: 20
-  projectilePrefab: {fileID: 7363774356823232242, guid: 868e866252aa8484a911386768a9b808,
-    type: 3}
-  curveHight: 3
-  gravity: -10
-  popRockProjectilePrefab: {fileID: 7363774356823232242, guid: 63d273c325845cb4a8074a6e3fc2a7ea,
-    type: 3}
-  score: 0
---- !u!1 &2151384204395174171
+  delay: 1
+  blastRadius: 20
+  force: 400
+--- !u!1 &7363774357378455289
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,48 +87,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2151384204395174174}
-  - component: {fileID: 2151384204395174175}
-  - component: {fileID: 2151384204395174172}
-  - component: {fileID: 2151384204395174173}
-  - component: {fileID: 2151384204395174170}
-  m_Layer: 7
-  m_Name: PCVisuals
-  m_TagString: Ball
+  - component: {fileID: 7363774357378455288}
+  - component: {fileID: 7363774357378455290}
+  - component: {fileID: 7363774357378455291}
+  m_Layer: 6
+  m_Name: ProjectileVisuals
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2151384204395174174
+--- !u!4 &7363774357378455288
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204395174171}
+  m_GameObject: {fileID: 7363774357378455289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 2151384204179005305}
+  m_Father: {fileID: 7363774356823232245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2151384204395174175
+--- !u!33 &7363774357378455290
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204395174171}
+  m_GameObject: {fileID: 7363774357378455289}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2151384204395174172
+--- !u!23 &7363774357378455291
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204395174171}
+  m_GameObject: {fileID: 7363774357378455289}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -156,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 94e2ae3486c3d104cb060c3eff68ce44, type: 2}
+  - {fileID: 2100000, guid: 72153f7f6aa87614798ed52f8bf47458, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -178,28 +162,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2151384204395174173
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204395174171}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2151384204395174170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2151384204395174171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd90ee474ce7ae419296ef09d26e94b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

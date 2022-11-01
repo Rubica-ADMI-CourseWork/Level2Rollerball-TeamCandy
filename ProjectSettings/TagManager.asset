@@ -20,6 +20,7 @@ TagManager:
   - Sticky
   - JellyEnemy
   - Bridge
+  - Sour
   layers:
   - Default
   - TransparentFX

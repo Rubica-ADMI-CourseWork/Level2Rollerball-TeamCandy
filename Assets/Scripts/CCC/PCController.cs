@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.WSA;
 
 public class PCController : MonoBehaviour
 {
@@ -19,17 +21,38 @@ public class PCController : MonoBehaviour
     Rigidbody rb;
 
     [Header("Special Ability Variables")]
-    [SerializeField] GameObject projectilePrefab;
     [SerializeField] float bulletSpeed;
+    Vector3 dir; //The direction we want the bullet to follow
+
+
+    [Header("Sticky/Liquorice Ammo Variables")]
+    [SerializeField] GameObject projectilePrefab;
 
     GameObject clone; //the bullet being instantiated
 
     public float curveHight = 25f;
     public float gravity = -18f;
-        
-    Vector3 dir; //The direction we want the bullet to follow
 
-    
+    [Header("Pop Rock Ammo Variables")]
+    [SerializeField] GameObject popRockProjectilePrefab;
+
+    Vector3 playerLaunchDir; //The direction we want the player to be launched when the ammo is launched
+
+    public float pushingForce = 5f;
+    public float whenToLaunch = 1.5f;
+    public float verticalLaunchOffset = 5f;
+    public float horizontalLaunchOffset = 2f;
+
+    float launchDirectionZ; //The position of the launchDirection in the Z
+    float launchDirectionY; //The position of the launchDirection in the Y
+    float positionZ; //The position of the enemy in the Z
+    float positionY; //The position of the enemy in the Y
+
+
+    [Header("Sour Splash Ammo Variables")]
+    [SerializeField] GameObject sourSplashProjectilePrefab;
+
+
     [Header("Level Checkpoint Variables")]
     List<Transform> levelCheckpoints;
 
@@ -68,7 +91,7 @@ public class PCController : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0))
                     {
-                        Launch(hit.point);
+                        LaunchProjectile(hit.point);
 
                     }
 
@@ -78,11 +101,14 @@ public class PCController : MonoBehaviour
 
             case AmmoStates.PopRock:
 
-                Shooting();
+                PopRockShooting();
+                                
 
                 break;
 
                 case AmmoStates.SourSplash:
+
+                SourSplashShooting();
 
                 break;
         }
@@ -90,18 +116,56 @@ public class PCController : MonoBehaviour
     }
 
 
-    void Shooting()
+    void PopRockShooting()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, 30f))
-        {
-            Debug.Log(hit.point);
-            
+        {                        
             if (Input.GetMouseButtonDown(0))
             {
 
-                GameObject bullet = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
+                GameObject bullet = Instantiate(popRockProjectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
+
+                dir = hit.point - transform.position;
+                Vector3 newDir = dir.normalized;
+
+
+                bullet.GetComponent<Rigidbody>().velocity = newDir * bulletSpeed;
+
+               
+                StartCoroutine(LaunchPlayer());
+            }
+        }
+
+    }
+
+    IEnumerator LaunchPlayer()
+    {
+        positionZ = transform.position.z;
+        positionY = transform.position.y;
+        launchDirectionZ = positionZ + horizontalLaunchOffset;
+        launchDirectionY = positionY + verticalLaunchOffset;
+
+
+        //Launch direction is the difference between our destination and our current position
+        playerLaunchDir = new Vector3(0f, launchDirectionY - positionY, launchDirectionZ - positionZ);
+
+        yield return new WaitForSeconds(whenToLaunch);
+        rb.AddForce(playerLaunchDir * pushingForce, ForceMode.Impulse);
+    }
+
+    void SourSplashShooting()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 30f))
+        {           
+
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                GameObject bullet = Instantiate(sourSplashProjectilePrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity) as GameObject;
 
                 dir = hit.point - transform.position;
                 Vector3 newDir = dir.normalized;
@@ -113,7 +177,7 @@ public class PCController : MonoBehaviour
 
     }
 
-    void Launch(Vector3 target)
+    void LaunchProjectile(Vector3 target)
     {
 
         clone = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;

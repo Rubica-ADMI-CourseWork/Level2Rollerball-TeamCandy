@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public GameObject stickyAmmoPrefab;
     GameObject stickyAmmo;
 
+    [Header("Liqorice Ammo variables")]
     public GameObject bridgeAmmoPrefab;
     GameObject bridgeAmmo;
 

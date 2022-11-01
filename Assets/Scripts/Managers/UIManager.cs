@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         victoryScreen.SetActive(false);
-        pausePanel.SetActive(false);
+        //pausePanel.SetActive(false);
     }
 
     // Update is called once per frame

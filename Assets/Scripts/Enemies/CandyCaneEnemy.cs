@@ -22,6 +22,9 @@ public class CandyCaneEnemy : MonoBehaviour
     NavMeshAgent pathfinder;
     Transform target;
 
+    public bool stick = false;
+    public GameObject temp;
+
 
     [Header("Enemy Idle/Patrol Variables")]
     [SerializeField] float proximityDstFromTarget = 10f;
@@ -41,6 +44,7 @@ public class CandyCaneEnemy : MonoBehaviour
 
     Vector3 launchDir; //The value gotten after subtracting the position of the enemy from the position of the launch direction object
 
+
         
     // Start is called before the first frame update
     void Start()
@@ -56,6 +60,19 @@ public class CandyCaneEnemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        ChangingStates();
+
+        if (stick && temp == null)
+        {
+            stick = false;
+            StopAllCoroutines();
+            pathfinder.enabled = true;
+
+        }
+    }
+
+    private void ChangingStates()
     {
         if (Vector3.Distance(transform.position, target.position) > proximityDstFromTarget)
         {
@@ -93,14 +110,18 @@ public class CandyCaneEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Ball"))
-        {           
+       
+        if (collision.gameObject.CompareTag("Ball"))
+        {
             LaunchPlayer();
             collision.gameObject.GetComponent<Rigidbody>().AddForce(launchDir * pushingForce, ForceMode.Impulse);
-                        
-        }
-    }
 
+        }
+       
+
+    }
+       
+   
     void LaunchPlayer()
     {
         launchDirectionZ = launchDirection.position.z;
@@ -114,5 +135,17 @@ public class CandyCaneEnemy : MonoBehaviour
                    
 
     }
-   
+
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.tag == "Sticky")
+        {
+            stick = true;
+            pathfinder.enabled = false;
+
+            temp = c.gameObject;
+        }
+
+    }
+
 }

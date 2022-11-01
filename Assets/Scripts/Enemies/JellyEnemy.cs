@@ -22,7 +22,14 @@ public class JellyEnemy : MonoBehaviour
     NavMeshAgent pathfinder;
     Transform target;
 
+    public bool stick = false;
+    public GameObject temp;
 
+    public GameObject jellyEnemyVisuals;
+    Collider boxCollider; //Access the attached collider
+
+    public float timeBeforeRespawn = 10f;
+       
     [Header("Enemy Idle/Patrol Variables")]
     [SerializeField] float proximityDstFromTarget =10f;
 
@@ -41,12 +48,12 @@ public class JellyEnemy : MonoBehaviour
     float attackSpeed;
     float percent;
 
-    public bool stick = false;
-    public GameObject temp;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {        
+        boxCollider = GetComponent<Collider>(); //get the collider
+
         pathfinder = GetComponent<NavMeshAgent>();
         InvokeRepeating("SetDestination", 1.5f, decisionDelay);
 
@@ -65,10 +72,12 @@ public class JellyEnemy : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) > proximityDstFromTarget)
         {
             currentEnemyState = EnemyState.Idle;
+            
         }
         else
         {
-            currentEnemyState = EnemyState.Chasing;            
+            currentEnemyState = EnemyState.Chasing;
+            
         }
 
         if (currentEnemyState == EnemyState.Idle)
@@ -90,7 +99,7 @@ public class JellyEnemy : MonoBehaviour
 
             if (sqrDstToTarget < Mathf.Pow (attackDistanceThreshold, 2))
             {
-                nextAttackTime = Time.time + timeBetweenAttacks;
+                nextAttackTime = Time.time + timeBetweenAttacks;                
                 StartCoroutine(Attack());
             }
 
@@ -101,7 +110,7 @@ public class JellyEnemy : MonoBehaviour
             stick = false;
             StopAllCoroutines();
             pathfinder.enabled = true;
-            
+                       
         }
        
     }
@@ -113,7 +122,7 @@ public class JellyEnemy : MonoBehaviour
 
     IEnumerator Attack()
     {
-        currentEnemyState = EnemyState.Attacking;
+        currentEnemyState = EnemyState.Attacking;        
         pathfinder.enabled = false; //Disable the pathfinder before the attack
 
         originalPosition = transform.position;
@@ -133,6 +142,7 @@ public class JellyEnemy : MonoBehaviour
 
         currentEnemyState = EnemyState.Chasing;
         pathfinder.enabled = true; //Enable the pathfinder after the attack
+        
     }
 
     //Tried this worked, but kept giving the set destination error way too frequently, guessing cause of the higher refresh rate
@@ -159,24 +169,32 @@ public class JellyEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider c)
     {
         if (c.tag == "Sticky")
-        {
-            //StartCoroutine(StayOnTheSpot());
-            //transform.parent = c.transform;
-            stick = true;
+        {            
+            stick = true;            
             pathfinder.enabled=false;
 
             temp = c.gameObject;
         }
+
+        if (c.tag == "Sour")
+        {
+            StartCoroutine(DestroyThenRespawnEnemies());
+        }
                 
     }
 
-    IEnumerator StayOnTheSpot()
+    IEnumerator DestroyThenRespawnEnemies()
     {
-        
+        jellyEnemyVisuals.SetActive(false); //Deactivate the visuals
+        boxCollider.enabled = false; //Deactivate the box collider
         pathfinder.enabled = false;
-        yield return new WaitForSeconds(5f);
+
+        yield return new WaitForSeconds(timeBeforeRespawn); //Wait sometime before respawning
+
+        jellyEnemyVisuals.SetActive(true); //Activate the visuals
+        boxCollider.enabled = true; //Activate the box collider
         pathfinder.enabled = true;
 
-        stick = false;
     }
+   
 }
