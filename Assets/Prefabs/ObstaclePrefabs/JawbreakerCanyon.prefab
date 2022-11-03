@@ -2738,6 +2738,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jawbreaker (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 44086885446775112, guid: ccd9c223d4fd95a42b43137c755763fe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c51646808cedc4c4385e97f96fbe11e2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd9c223d4fd95a42b43137c755763fe, type: 3}
 --- !u!4 &2520641512308532539 stripped
@@ -2819,6 +2824,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jawbreaker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 44086885446775112, guid: ccd9c223d4fd95a42b43137c755763fe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b456b0e47d121a34b9350e092edee811, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd9c223d4fd95a42b43137c755763fe, type: 3}
 --- !u!4 &2520641512043244535 stripped
@@ -2900,6 +2910,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jawbreaker
       objectReference: {fileID: 0}
+    - target: {fileID: 44086885446775112, guid: ccd9c223d4fd95a42b43137c755763fe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a043ae953864f564a88288557b5d7b02, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd9c223d4fd95a42b43137c755763fe, type: 3}
 --- !u!4 &2479159921014626265 stripped

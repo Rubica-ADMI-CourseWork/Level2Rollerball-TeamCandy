@@ -254,9 +254,10 @@ public class PCController : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+        
 
     void OnDeath()
-    {
+    {       
         int i = levelCheckpoints.Count - 1;
         Transform recentCheckpoint = levelCheckpoints[i];
         gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
