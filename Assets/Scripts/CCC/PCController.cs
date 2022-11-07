@@ -33,6 +33,8 @@ public class PCController : MonoBehaviour
     public float curveHight = 25f;
     public float gravity = -18f;
 
+    public List<GameObject> stickyAmmos;
+
     [Header("Pop Rock Ammo Variables")]
     [SerializeField] GameObject popRockProjectilePrefab;
 
@@ -48,10 +50,12 @@ public class PCController : MonoBehaviour
     float positionZ; //The position of the enemy in the Z
     float positionY; //The position of the enemy in the Y
 
+    public List<GameObject> popRockAmmos;
 
     [Header("Sour Splash Ammo Variables")]
     [SerializeField] GameObject sourSplashProjectilePrefab;
 
+    public List<GameObject> sourSplashAmmos;
 
     [Header("Level Checkpoint Variables")]
     List<Transform> levelCheckpoints;
@@ -70,6 +74,10 @@ public class PCController : MonoBehaviour
         levelCheckpoints = new List<Transform>();
 
         score = 0; // at the beginning score is 0
+
+        stickyAmmos = new List<GameObject>();
+        popRockAmmos = new List<GameObject>();
+        sourSplashAmmos = new List<GameObject>();
 
     }
 
@@ -252,6 +260,36 @@ public class PCController : MonoBehaviour
         {
             UIManager.instance.victoryScreen.SetActive(true);
             Time.timeScale = 0f;
+        }
+
+        if(c.tag == "StickyAmmo")
+        {
+            GameObject newStickyAmmo = c.gameObject; //store the collided ammo
+            stickyAmmos.Add(newStickyAmmo); //add it to the list
+
+            UIManager.instance.stickyAmmoText.text = stickyAmmos.Count.ToString(); //update the UI ammo text on the screen
+
+            Destroy(c.gameObject); //Destroy the ammo pickup after collision
+        }
+
+        if(c.tag == "PopRockAmmo")
+        {
+            GameObject newPopRockAmmo = c.gameObject; //store the collided ammo
+            popRockAmmos.Add(newPopRockAmmo); //add it to the list
+
+            UIManager.instance.popRockAmmoText.text = popRockAmmos.Count.ToString(); //update the UI ammo text on the screen
+
+            Destroy(c.gameObject); //Destroy the ammo pickup after collision
+        }
+
+        if(c.tag == "SourSplashAmmo")
+        {
+            GameObject newSourSplashAmmo = c.gameObject; //store the collided ammo
+            sourSplashAmmos.Add(newSourSplashAmmo); //add it to the list
+
+            UIManager.instance.sourSplashAmmoText.text = sourSplashAmmos.Count.ToString(); //update the UI ammo text on the screen
+
+            Destroy(c.gameObject); //Destroy the ammo pickup after collision
         }
     }
         

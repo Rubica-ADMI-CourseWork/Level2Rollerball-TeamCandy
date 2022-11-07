@@ -158,7 +158,7 @@ MonoBehaviour:
   stick: 0
   temp: {fileID: 0}
   jellyEnemyVisuals: {fileID: 8611285532664459342}
-  timeBeforeRespawn: 10
+  timeBeforeRespawn: 30
   proximityDstFromTarget: 10
   waypoints:
   - {fileID: 8611285533071166276}

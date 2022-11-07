@@ -21,6 +21,9 @@ TagManager:
   - JellyEnemy
   - Bridge
   - Sour
+  - StickyAmmo
+  - SourSplashAmmo
+  - PopRockAmmo
   layers:
   - Default
   - TransparentFX

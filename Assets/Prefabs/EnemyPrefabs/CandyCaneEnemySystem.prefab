@@ -150,7 +150,7 @@ MonoBehaviour:
   stick: 0
   temp: {fileID: 0}
   candyCaneEnemyVisuals: {fileID: 2719705374974638876}
-  timeBeforeRespawn: 10
+  timeBeforeRespawn: 30
   proximityDstFromTarget: 10
   waypoints:
   - {fileID: 2719705376227331210}

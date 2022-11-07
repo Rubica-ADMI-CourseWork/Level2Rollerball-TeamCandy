@@ -15,9 +15,14 @@ public class UIManager : MonoBehaviour
     bool isPaused = false;
 
 
-    [Header("ScoreVariables")]
+    [Header("Score Variables")]
     public TMP_Text scoreText;
     public TMP_Text scoreVictoryScreenText;
+
+    [Header("Ammo Variables")]
+    public TMP_Text stickyAmmoText;
+    public TMP_Text popRockAmmoText;
+    public TMP_Text sourSplashAmmoText;
 
     private void Awake()
     {
