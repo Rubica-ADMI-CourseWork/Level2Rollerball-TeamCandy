@@ -90,14 +90,17 @@ MonoBehaviour:
     type: 3}
   curveHight: 3
   gravity: -10
+  stickyAmmos: []
   popRockProjectilePrefab: {fileID: 7363774356823232242, guid: 63d273c325845cb4a8074a6e3fc2a7ea,
     type: 3}
   pushingForce: 5
-  whenToLaunch: 1.5
+  whenToLaunch: 0.5
   verticalLaunchOffset: 5
   horizontalLaunchOffset: 1
+  popRockAmmos: []
   sourSplashProjectilePrefab: {fileID: 7363774356823232242, guid: a741c568713b6524e94ee1262265e539,
     type: 3}
+  sourSplashAmmos: []
   score: 0
 --- !u!1 &2151384204395174171
 GameObject:

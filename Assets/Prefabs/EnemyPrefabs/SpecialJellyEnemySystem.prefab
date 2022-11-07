@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8611285532555938419}
   - component: {fileID: 8611285532555938416}
-  - component: {fileID: 8611285532555938418}
+  - component: {fileID: 2750264794164991612}
   - component: {fileID: 8611285532555938421}
   - component: {fileID: 4197128941244975438}
   m_Layer: 0
@@ -142,7 +142,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &8611285532555938418
+--- !u!114 &2750264794164991612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8611285532555938417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff4c6f5722aa4e4e920fba543753ac9, type: 3}
+  m_Script: {fileID: 11500000, guid: c53452b3158d5a343888faeadfa874b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   decisionDelay: 1
@@ -165,6 +165,8 @@ MonoBehaviour:
   - {fileID: 8611285531833597426}
   - {fileID: 8611285532102487324}
   - {fileID: 8611285531986722946}
+  specialPickupPrefab: {fileID: 5522017194114242021, guid: 473a5a7e9ef97ec42a0c5f74e1746df3,
+    type: 3}
 --- !u!195 &8611285532555938421
 NavMeshAgent:
   m_ObjectHideFlags: 0

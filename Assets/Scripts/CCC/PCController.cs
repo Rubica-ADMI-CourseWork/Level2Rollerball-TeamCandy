@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
 
@@ -71,6 +72,8 @@ public class PCController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        currentAmmoState = AmmoStates.NoBullets;
+
         levelCheckpoints = new List<Transform>();
 
         score = 0; // at the beginning score is 0
@@ -97,10 +100,30 @@ public class PCController : MonoBehaviour
                 {
                     //Debug.Log(hit.point);
 
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0) && stickyAmmos.Count > 0 && !EventSystem.current.IsPointerOverGameObject())
                     {
                         LaunchProjectile(hit.point);
 
+                        //Remove from list of ammos
+                        int i = stickyAmmos.Count - 1; //get the last ammo on the list
+                        GameObject stickyAmmoToRemove = stickyAmmos[i]; //store it as a gameobject
+                        Destroy(stickyAmmoToRemove); //destroy it
+                        stickyAmmos.RemoveAt(i); //then remove from the list
+
+                        UIManager.instance.stickyAmmoText.text = stickyAmmos.Count.ToString(); //Update the new remaining number of ammo on the UI text
+
+                        if (currentAmmoState != AmmoStates.NoBullets)
+                        {
+                            currentAmmoState = AmmoStates.NoBullets; //switch to no bullets after launching to prevent misfire unless chosen
+                        }
+                    }
+
+                    else if(Input.GetMouseButtonDown(0) && stickyAmmos.Count <= 0 && !EventSystem.current.IsPointerOverGameObject())
+                    {
+                        if(currentAmmoState != AmmoStates.NoBullets)
+                        {
+                            currentAmmoState = AmmoStates.NoBullets;
+                        }
                     }
 
                 }
@@ -130,7 +153,7 @@ public class PCController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 30f))
         {                        
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && popRockAmmos.Count > 0 && !EventSystem.current.IsPointerOverGameObject())
             {
 
                 GameObject bullet = Instantiate(popRockProjectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
@@ -143,6 +166,27 @@ public class PCController : MonoBehaviour
 
                
                 StartCoroutine(LaunchPlayer());
+
+                //Remove from list of ammos
+                int i = popRockAmmos.Count - 1; //get the last ammo on the list
+                GameObject popRockAmmoToRemove = popRockAmmos[i]; //store it as a gameobject
+                Destroy(popRockAmmoToRemove); //destroy it
+                popRockAmmos.RemoveAt(i); //then remove from the list
+
+                UIManager.instance.popRockAmmoText.text = popRockAmmos.Count.ToString(); //Update the new remaining number of ammo on the UI text
+
+                if (currentAmmoState != AmmoStates.NoBullets)
+                {
+                    currentAmmoState = AmmoStates.NoBullets; //switch to no bullets after launching to prevent misfire unless chosen
+                }
+            }
+
+            else if (Input.GetMouseButtonDown(0) && popRockAmmos.Count <= 0 && !EventSystem.current.IsPointerOverGameObject())
+            {
+                if (currentAmmoState != AmmoStates.NoBullets)
+                {
+                    currentAmmoState = AmmoStates.NoBullets;
+                }
             }
         }
 
@@ -170,7 +214,7 @@ public class PCController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 30f))
         {           
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && sourSplashAmmos.Count > 0 && !EventSystem.current.IsPointerOverGameObject())
             {
 
                 GameObject bullet = Instantiate(sourSplashProjectilePrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity) as GameObject;
@@ -180,6 +224,27 @@ public class PCController : MonoBehaviour
 
 
                 bullet.GetComponent<Rigidbody>().velocity = newDir * bulletSpeed;
+
+                //Remove from list of ammos
+                int i = sourSplashAmmos.Count - 1; //get the last ammo on the list
+                GameObject sourSplashAmmoToRemove = sourSplashAmmos[i]; //store it as a gameobject
+                Destroy(sourSplashAmmoToRemove); //destroy it
+                sourSplashAmmos.RemoveAt(i); //then remove from the list
+
+                UIManager.instance.sourSplashAmmoText.text = sourSplashAmmos.Count.ToString(); //Update the new remaining number of ammo on the UI text
+
+                if (currentAmmoState != AmmoStates.NoBullets)
+                {
+                    currentAmmoState = AmmoStates.NoBullets; //switch to no bullets after launching to prevent misfire unless chosen
+                }
+            }
+
+            else if (Input.GetMouseButtonDown(0) && sourSplashAmmos.Count <= 0 && !EventSystem.current.IsPointerOverGameObject())
+            {
+                if (currentAmmoState != AmmoStates.NoBullets)
+                {
+                    currentAmmoState = AmmoStates.NoBullets;
+                }
             }
         }
 
@@ -300,6 +365,30 @@ public class PCController : MonoBehaviour
         Transform recentCheckpoint = levelCheckpoints[i];
         gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
                 
+    }
+
+    public void StickyAmmoSelected()
+    {
+        if(currentAmmoState != AmmoStates.StickyandLiquorice)
+        {
+            currentAmmoState = AmmoStates.StickyandLiquorice;
+        }
+    }
+
+    public void PopRockAmmoSelected()
+    {
+        if(currentAmmoState != AmmoStates.PopRock)
+        {
+            currentAmmoState = AmmoStates.PopRock;
+        }
+    }
+
+    public void SourSplashAmmoSelected()
+    {
+        if(currentAmmoState != AmmoStates.SourSplash)
+        {
+            currentAmmoState = AmmoStates.SourSplash;
+        }
     }
 
     
