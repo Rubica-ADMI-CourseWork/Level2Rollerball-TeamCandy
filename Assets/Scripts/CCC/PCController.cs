@@ -325,13 +325,18 @@ public class PCController : MonoBehaviour
             OnDeath();
         }
 
+        if (c.tag == "CheckpointObjective")
+        {
+            CandyGameManager.instance.currentNumberOfCheckpointsPassed++; //update the number of checkpoints passed
+            CandyGameManager.instance.checkpointsText.text = CandyGameManager.instance.currentNumberOfCheckpointsPassed.ToString(); //update the number of checkpoints passed on the UI
+
+            Destroy(c.gameObject); //Destroy the checkpoint after collision
+        }
+
         if (c.tag == "LevelCheckpoint")
         {
             Transform newCheckpoint = c.gameObject.transform; //store the collided checkpoint
-            levelCheckpoints.Add(newCheckpoint); //add it to the list
-
-            CandyGameManager.instance.currentNumberOfCheckpointsPassed++; //update the number of checkpoints passed
-            CandyGameManager.instance.checkpointsText.text = CandyGameManager.instance.currentNumberOfCheckpointsPassed.ToString(); //update the number of checkpoints passed on the UI
+            levelCheckpoints.Add(newCheckpoint); //add it to the list                        
         }
 
         if(c.tag == "FinalLevelCheckpoint")
@@ -339,20 +344,36 @@ public class PCController : MonoBehaviour
             //If level 1
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level1"))
             {
-                if (CandyGameManager.instance.currentNumberOfCheckpointsPassed >= 2)
-                {
-                    CandyGameManager.instance.currentNumberOfCheckpointsPassed++;
-                    CandyGameManager.instance.checkpointsText.text = CandyGameManager.instance.currentNumberOfCheckpointsPassed.ToString(); //update the number of checkpoints passed on the UI
-
+                if (CandyGameManager.instance.currentNumberOfCheckpointsPassed >= CandyGameManager.instance.totalnumberOfCheckpoints)
+                {                    
                     UIManager.instance.victoryScreen.SetActive(true);
                     Time.timeScale = 0f;
                 }           
             }
-
+            //If level 2
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level2"))
             {
                 if(CandyGameManager.instance.currentNumberOfRawMaterials >= CandyGameManager.instance.totalnumberOfRawMaterials)
-                {                   
+                {      
+                    if(CandyGameManager.instance.currentTime <= 60f)
+                    {
+                        score += 15;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.currentTime >60f && CandyGameManager.instance.currentTime <= 90f)
+                    {
+                        score += 10;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.currentTime > 90f && CandyGameManager.instance.currentTime <= 120f)
+                    {
+                        score += 5;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    
                     UIManager.instance.victoryScreen.SetActive(true);
                     Time.timeScale = 0f;
                 }

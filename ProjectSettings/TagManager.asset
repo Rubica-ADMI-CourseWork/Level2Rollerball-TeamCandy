@@ -25,6 +25,7 @@ TagManager:
   - SourSplashAmmo
   - PopRockAmmo
   - RawMaterial
+  - CheckpointObjective
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.SceneManagement;
 
 public class CandyGameManager : MonoBehaviour
@@ -33,6 +34,9 @@ public class CandyGameManager : MonoBehaviour
     public int totalnumberOfRawMaterials;
 
     public TMP_Text rawMaterialsText;
+    public TMP_Text timerText;
+
+    public float currentTime;
 
     [Header("Level 3 Variables")]
     public GameObject level3Panel;
@@ -65,10 +69,10 @@ public class CandyGameManager : MonoBehaviour
         level4Panel.SetActive(false);
 
         //Level 1 stuff
-        totalnumberOfCheckpoints = 3;
+        totalnumberOfCheckpoints = GameObject.FindGameObjectsWithTag("CheckpointObjective").Length; //Get the total number of checkpoints in the scene
 
         //Level 2 stuff
-        totalnumberOfRawMaterials = GameObject.FindGameObjectsWithTag("RawMaterial").Length;
+        totalnumberOfRawMaterials = GameObject.FindGameObjectsWithTag("RawMaterial").Length; //Get the total number of raw materials in the scene
 
     }
 
@@ -103,6 +107,14 @@ public class CandyGameManager : MonoBehaviour
 
                 rawMaterialsText.text = $"{currentNumberOfRawMaterials} / {totalnumberOfRawMaterials}";
 
+                //Timer stuff
+                currentTime += Time.deltaTime; //set the time to start counting when the scene loads
+
+                float minutes = Mathf.FloorToInt(currentTime / 60); //convert to minutes
+                float seconds = Mathf.FloorToInt(currentTime % 60); //convert to seconds
+
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds); //how it will be seen on the UI
+                                
                 break;
 
             case levelConditionStates.Level3:
