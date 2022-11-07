@@ -24,6 +24,7 @@ TagManager:
   - StickyAmmo
   - SourSplashAmmo
   - PopRockAmmo
+  - RawMaterial
   layers:
   - Default
   - TransparentFX

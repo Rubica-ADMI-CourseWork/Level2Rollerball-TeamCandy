@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text popRockAmmoText;
     public TMP_Text sourSplashAmmoText;
 
+    
     private void Awake()
     {
         if (instance == null)

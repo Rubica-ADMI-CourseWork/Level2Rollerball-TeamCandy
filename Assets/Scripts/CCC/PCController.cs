@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
 
@@ -82,6 +83,7 @@ public class PCController : MonoBehaviour
         popRockAmmos = new List<GameObject>();
         sourSplashAmmos = new List<GameObject>();
 
+       
     }
 
     private void Update()
@@ -310,6 +312,14 @@ public class PCController : MonoBehaviour
             Destroy(c.gameObject); //Destroy the pickup after collision
         }
 
+        if(c.tag == "RawMaterial")
+        {
+            CandyGameManager.instance.currentNumberOfRawMaterials++; //update the number of raw materials collected
+            CandyGameManager.instance.rawMaterialsText.text = CandyGameManager.instance.currentNumberOfRawMaterials.ToString(); //update the number of raw materials collected on the UI
+
+            Destroy(c.gameObject); //Destroy the raw material after collision
+        }
+
         if (c.tag == "Death")
         {
             OnDeath();
@@ -319,12 +329,41 @@ public class PCController : MonoBehaviour
         {
             Transform newCheckpoint = c.gameObject.transform; //store the collided checkpoint
             levelCheckpoints.Add(newCheckpoint); //add it to the list
+
+            CandyGameManager.instance.currentNumberOfCheckpointsPassed++; //update the number of checkpoints passed
+            CandyGameManager.instance.checkpointsText.text = CandyGameManager.instance.currentNumberOfCheckpointsPassed.ToString(); //update the number of checkpoints passed on the UI
         }
 
         if(c.tag == "FinalLevelCheckpoint")
         {
-            UIManager.instance.victoryScreen.SetActive(true);
-            Time.timeScale = 0f;
+            //If level 1
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level1"))
+            {
+                if (CandyGameManager.instance.currentNumberOfCheckpointsPassed >= 2)
+                {
+                    CandyGameManager.instance.currentNumberOfCheckpointsPassed++;
+                    CandyGameManager.instance.checkpointsText.text = CandyGameManager.instance.currentNumberOfCheckpointsPassed.ToString(); //update the number of checkpoints passed on the UI
+
+                    UIManager.instance.victoryScreen.SetActive(true);
+                    Time.timeScale = 0f;
+                }           
+            }
+
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level2"))
+            {
+                if(CandyGameManager.instance.currentNumberOfRawMaterials >= CandyGameManager.instance.totalnumberOfRawMaterials)
+                {                   
+                    UIManager.instance.victoryScreen.SetActive(true);
+                    Time.timeScale = 0f;
+                }
+            }
+
+            else
+            {
+                UIManager.instance.victoryScreen.SetActive(true);
+                Time.timeScale = 0f;
+            }
+
         }
 
         if(c.tag == "StickyAmmo")

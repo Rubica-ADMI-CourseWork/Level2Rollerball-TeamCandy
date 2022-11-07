@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,10 +24,15 @@ public class CandyGameManager : MonoBehaviour
     public int currentNumberOfCheckpointsPassed;
     public int totalnumberOfCheckpoints;
 
+    public TMP_Text checkpointsText;
 
     [Header("Level 2 Variables")]
     public GameObject level2Panel;
 
+    public int currentNumberOfRawMaterials;
+    public int totalnumberOfRawMaterials;
+
+    public TMP_Text rawMaterialsText;
 
     [Header("Level 3 Variables")]
     public GameObject level3Panel;
@@ -53,13 +59,16 @@ public class CandyGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      level1Panel.SetActive(false);
-      level2Panel.SetActive(false);
-      level3Panel.SetActive(false);
-      level4Panel.SetActive(false);
+        level1Panel.SetActive(false);
+        level2Panel.SetActive(false);
+        level3Panel.SetActive(false);
+        level4Panel.SetActive(false);
 
         //Level 1 stuff
         totalnumberOfCheckpoints = 3;
+
+        //Level 2 stuff
+        totalnumberOfRawMaterials = GameObject.FindGameObjectsWithTag("RawMaterial").Length;
 
     }
 
@@ -79,6 +88,8 @@ public class CandyGameManager : MonoBehaviour
 
                 level1Panel.SetActive(true);
 
+                checkpointsText.text = $"{currentNumberOfCheckpointsPassed} / {totalnumberOfCheckpoints}";
+
                 break;
 
             case levelConditionStates.Level2:
@@ -89,6 +100,8 @@ public class CandyGameManager : MonoBehaviour
                 }
 
                 level2Panel.SetActive(true);
+
+                rawMaterialsText.text = $"{currentNumberOfRawMaterials} / {totalnumberOfRawMaterials}";
 
                 break;
 
