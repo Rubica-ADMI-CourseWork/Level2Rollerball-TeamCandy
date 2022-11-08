@@ -26,6 +26,7 @@ TagManager:
   - PopRockAmmo
   - RawMaterial
   - CheckpointObjective
+  - ChocoChip
   layers:
   - Default
   - TransparentFX

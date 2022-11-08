@@ -85,10 +85,10 @@ public class CandyGameManager : MonoBehaviour
         totalnumberOfRawMaterials = GameObject.FindGameObjectsWithTag("RawMaterial").Length; //Get the total number of raw materials in the scene
 
         //Level 3 stuff
-        totalNumberOfPickups = 40;
+        totalNumberOfPickups = 15;
 
         //Level 4 stuff
-        totalNumberOfEnemies = 25;
+        totalNumberOfEnemies = 20;
 
     }
 
