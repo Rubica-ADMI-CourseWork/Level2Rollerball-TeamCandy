@@ -41,10 +41,20 @@ public class CandyGameManager : MonoBehaviour
     [Header("Level 3 Variables")]
     public GameObject level3Panel;
 
+    public int currentNumberOfPickups;
+    public int totalNumberOfPickups;
+    public int extraPickups;
+
+    public TMP_Text pickupText;
 
     [Header("Level 4 Variables")]
     public GameObject level4Panel;
 
+    public int currentNumberOfEnemies;
+    public int totalNumberOfEnemies;
+    public int extraEnemies;
+
+    public TMP_Text enemiesText;
 
     
     private void Awake()
@@ -74,6 +84,12 @@ public class CandyGameManager : MonoBehaviour
         //Level 2 stuff
         totalnumberOfRawMaterials = GameObject.FindGameObjectsWithTag("RawMaterial").Length; //Get the total number of raw materials in the scene
 
+        //Level 3 stuff
+        totalNumberOfPickups = 40;
+
+        //Level 4 stuff
+        totalNumberOfEnemies = 25;
+
     }
 
     // Update is called once per frame
@@ -92,7 +108,7 @@ public class CandyGameManager : MonoBehaviour
 
                 level1Panel.SetActive(true);
 
-                checkpointsText.text = $"{currentNumberOfCheckpointsPassed} / {totalnumberOfCheckpoints}";
+                checkpointsText.text = $"{currentNumberOfCheckpointsPassed} / {totalnumberOfCheckpoints}"; //What the UI text displays
 
                 break;
 
@@ -105,7 +121,7 @@ public class CandyGameManager : MonoBehaviour
 
                 level2Panel.SetActive(true);
 
-                rawMaterialsText.text = $"{currentNumberOfRawMaterials} / {totalnumberOfRawMaterials}";
+                rawMaterialsText.text = $"{currentNumberOfRawMaterials} / {totalnumberOfRawMaterials}"; //What the UI text displays
 
                 //Timer stuff
                 currentTime += Time.deltaTime; //set the time to start counting when the scene loads
@@ -126,6 +142,10 @@ public class CandyGameManager : MonoBehaviour
 
                 level3Panel.SetActive(true);
 
+                pickupText.text = $"{currentNumberOfPickups} / {totalNumberOfPickups}"; //What the UI text displays
+
+                extraPickups = currentNumberOfPickups - totalNumberOfPickups; //get the extra pickups and give bonuses accordingly
+
                 break;
 
             case levelConditionStates.Level4:
@@ -136,6 +156,10 @@ public class CandyGameManager : MonoBehaviour
                 }
 
                 level4Panel.SetActive(true);
+
+                enemiesText.text = $"{currentNumberOfEnemies} / {totalNumberOfEnemies}"; //What the UI text displays
+
+                extraEnemies = currentNumberOfEnemies - totalNumberOfEnemies; //get the extra enemies killed and give bonuses accordingly
 
                 break;
         }

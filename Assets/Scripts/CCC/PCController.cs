@@ -300,6 +300,9 @@ public class PCController : MonoBehaviour
             UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
             UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
 
+            CandyGameManager.instance.currentNumberOfPickups++; //update the number of pickups collected
+            CandyGameManager.instance.pickupText.text = CandyGameManager.instance.currentNumberOfPickups.ToString(); //update the number of pickups collected on the UI
+
             Destroy(c.gameObject); //Destroy the pickup after collision
         }
 
@@ -308,6 +311,9 @@ public class PCController : MonoBehaviour
             score += 5; //increase the score count by 5
             UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
             UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+
+            CandyGameManager.instance.currentNumberOfPickups++; //update the number of pickups collected
+            CandyGameManager.instance.pickupText.text = CandyGameManager.instance.currentNumberOfPickups.ToString(); //update the number of pickups collected on the UI
 
             Destroy(c.gameObject); //Destroy the pickup after collision
         }
@@ -378,6 +384,62 @@ public class PCController : MonoBehaviour
                     Time.timeScale = 0f;
                 }
             }
+            //If level 3
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level3"))
+            {
+                if (CandyGameManager.instance.currentNumberOfPickups >= CandyGameManager.instance.totalNumberOfPickups)
+                {
+                    if(CandyGameManager.instance.extraPickups > 0f && CandyGameManager.instance.extraPickups <= 5f)
+                    {
+                        score += 5;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.extraPickups > 5f && CandyGameManager.instance.extraPickups <= 15f)
+                    {
+                        score += 10;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.extraPickups > 15f)
+                    {
+                        score += 15;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+
+                    UIManager.instance.victoryScreen.SetActive(true);
+                    Time.timeScale = 0f;
+                }
+            }
+            //If level 4
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level4"))
+            {                
+                if (CandyGameManager.instance.currentNumberOfEnemies >= CandyGameManager.instance.totalNumberOfEnemies)
+                {
+                    if (CandyGameManager.instance.extraEnemies > 0f && CandyGameManager.instance.extraEnemies <= 5f)
+                    {
+                        score += 5;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.extraEnemies > 5f && CandyGameManager.instance.extraEnemies <= 10f)
+                    {
+                        score += 10;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.extraEnemies > 10f)
+                    {
+                        score += 15;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+
+                    UIManager.instance.victoryScreen.SetActive(true);
+                    Time.timeScale = 0f;
+                }
+            }
 
             else
             {
@@ -423,8 +485,9 @@ public class PCController : MonoBehaviour
     {       
         int i = levelCheckpoints.Count - 1;
         Transform recentCheckpoint = levelCheckpoints[i];
-        gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
-                
+        //gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
+        gameObject.transform.position = new Vector3(recentCheckpoint.position.x, recentCheckpoint.position.y + 3f, recentCheckpoint.position.z); //on death the player position is moved to the recently passed checkpoint as stored in the list
+
     }
 
     public void StickyAmmoSelected()

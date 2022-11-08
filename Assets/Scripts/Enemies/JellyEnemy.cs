@@ -189,6 +189,9 @@ public class JellyEnemy : MonoBehaviour
         boxCollider.enabled = false; //Deactivate the box collider
         pathfinder.enabled = false;
 
+        CandyGameManager.instance.currentNumberOfEnemies++; //update the number of enemies killed
+        CandyGameManager.instance.enemiesText.text = CandyGameManager.instance.currentNumberOfEnemies.ToString(); //update the number of enemies killed on the UI
+
         yield return new WaitForSeconds(timeBeforeRespawn); //Wait sometime before respawning
 
         jellyEnemyVisuals.SetActive(true); //Activate the visuals

@@ -3078,7 +3078,13 @@ MonoBehaviour:
   timerText: {fileID: 615674935}
   currentTime: 0
   level3Panel: {fileID: 918765408}
+  currentNumberOfPickups: 0
+  totalNumberOfPickups: 0
+  pickupText: {fileID: 322484504}
   level4Panel: {fileID: 1244991382}
+  currentNumberOfEnemies: 0
+  totalNumberOfEnemies: 0
+  enemiesText: {fileID: 357143487}
 --- !u!4 &999457904
 Transform:
   m_ObjectHideFlags: 0
