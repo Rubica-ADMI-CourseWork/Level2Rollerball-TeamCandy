@@ -482,11 +482,15 @@ public class PCController : MonoBehaviour
         
 
     void OnDeath()
-    {       
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
         int i = levelCheckpoints.Count - 1;
-        Transform recentCheckpoint = levelCheckpoints[i];
-        //gameObject.transform.position = recentCheckpoint.position; //on death the player position is moved to the recently passed checkpoint as stored in the list
+        Transform recentCheckpoint = levelCheckpoints[i];        
         gameObject.transform.position = new Vector3(recentCheckpoint.position.x, recentCheckpoint.position.y + 3f, recentCheckpoint.position.z); //on death the player position is moved to the recently passed checkpoint as stored in the list
+
+        //Camera.main.transform.position = new Vector3(recentCheckpoint.position.x, recentCheckpoint.position.y + 6f, recentCheckpoint.position.z - 9f); //Resetting the camera position
 
     }
 

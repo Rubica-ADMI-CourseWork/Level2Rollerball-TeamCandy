@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8873615436144291284}
   - component: {fileID: 8873615436144291286}
   - component: {fileID: 8873615436144291285}
+  - component: {fileID: 1947636542126943688}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: SpinningLollies
@@ -185,6 +186,20 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1947636542126943688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873615436144291278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb1bd367b50c7344b4bb1cc5373b8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stick: 0
+  temp: {fileID: 0}
 --- !u!1 &8873615437068089402
 GameObject:
   m_ObjectHideFlags: 0
