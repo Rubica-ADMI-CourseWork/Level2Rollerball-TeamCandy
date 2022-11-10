@@ -3,7 +3,77 @@ guid: d72b4646308d27c4d8a259f73c89d30b
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: 15087330c7f2b904f971662c192ad766, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlueJelly
+    second: {fileID: 2100000, guid: 15f5530d7e0f1ff489a6aefda70a2b57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green
+    second: {fileID: 2100000, guid: 50af0d030a12de94d897f5b9b7a85cab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GreenJelly
+    second: {fileID: 2100000, guid: e6c8e0c3f9c1a164396e28acc1d4f347, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OrangeJelly
+    second: {fileID: 2100000, guid: e61c568f11d0d8b4f8be8260c352c77b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pink
+    second: {fileID: 2100000, guid: c2114e30d87e95b418b09941d34ad24f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Purple.001
+    second: {fileID: 2100000, guid: 41bec202bc55b0c45ac19ce0b79ef4a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PurpleJelly
+    second: {fileID: 2100000, guid: 6d1d71c4638a90b4a9ab295412b1af02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: df2f38cc5bfb2a04788d5feae04fbc77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedJelly
+    second: {fileID: 2100000, guid: ca7e086920ae4ea48ae8f5492bcf3d3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yellow
+    second: {fileID: 2100000, guid: e8690ac5d8c11f14c80660b334435b49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: YellowJelly
+    second: {fileID: 2100000, guid: 68aa07e22945c4b4c9f8400d1bd6f5f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orange
+    second: {fileID: 2100000, guid: ec570af13d758d3438bbc24365b21cd4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pinkJelly
+    second: {fileID: 2100000, guid: c794af327868fc048b283f1c73e108f6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
