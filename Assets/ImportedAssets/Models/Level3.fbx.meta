@@ -27,6 +27,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 193333b626dfe4644abf8d99915125f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: OrangeJelly
     second: {fileID: 2100000, guid: e61c568f11d0d8b4f8be8260c352c77b, type: 2}
   - first:
