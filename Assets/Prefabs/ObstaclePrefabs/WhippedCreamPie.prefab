@@ -194,7 +194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3615752396069101651
 Transform:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whippedcreamPieExplosion: {fileID: 1758507556}
-  whippedcreamPieVisuals: {fileID: 3615752396069101648}
+  whippedcreamPieVisuals: {fileID: 2237265047680743391}
   explosionTimeOnScreen: 5
   timeBeforeRespawn: 20
 --- !u!54 &7911477001745661349
@@ -414,6 +414,12 @@ PrefabInstance:
 --- !u!4 &1461290645419732325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1426855364709927566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2237265047680743391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 25797574e4d7a0b4294d85d190fd74f4,
     type: 3}
   m_PrefabInstance: {fileID: 1426855364709927566}
   m_PrefabAsset: {fileID: 0}
