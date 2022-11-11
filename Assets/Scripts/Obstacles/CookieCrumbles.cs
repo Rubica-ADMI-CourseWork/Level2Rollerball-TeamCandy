@@ -28,6 +28,8 @@ public class CookieCrumbles : MonoBehaviour
 
         while (true)
         {
+            AudioManager.instance.PlaySound("CookieCrumbles"); //Play falling platform audio
+
             fallingPlatform.SetActive(false);            
             yield return new WaitForSeconds(timeItTakesToReform);
             fallingPlatform.SetActive(true);

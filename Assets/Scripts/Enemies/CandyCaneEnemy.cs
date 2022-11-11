@@ -119,6 +119,8 @@ public class CandyCaneEnemy : MonoBehaviour
        
         if (collision.gameObject.CompareTag("Ball"))
         {
+            AudioManager.instance.PlaySound("CandyCaneCollision");
+
             LaunchPlayer();
             collision.gameObject.GetComponent<Rigidbody>().AddForce(launchDir * pushingForce, ForceMode.Impulse);
 

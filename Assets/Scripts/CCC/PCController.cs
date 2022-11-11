@@ -206,6 +206,9 @@ public class PCController : MonoBehaviour
         playerLaunchDir = new Vector3(0f, launchDirectionY - positionY, launchDirectionZ - positionZ);
 
         yield return new WaitForSeconds(whenToLaunch);
+
+        AudioManager.instance.PlaySound("PopRockAmmo");
+
         rb.AddForce(playerLaunchDir * pushingForce, ForceMode.Impulse);
     }
 
@@ -463,6 +466,8 @@ public class PCController : MonoBehaviour
 
         if(c.tag == "StickyAmmo")
         {
+            AudioManager.instance.PlaySound("AmmoCollection");
+
             GameObject newStickyAmmo = c.gameObject; //store the collided ammo
             stickyAmmos.Add(newStickyAmmo); //add it to the list
 
@@ -473,6 +478,8 @@ public class PCController : MonoBehaviour
 
         if(c.tag == "PopRockAmmo")
         {
+            AudioManager.instance.PlaySound("AmmoCollection");
+
             GameObject newPopRockAmmo = c.gameObject; //store the collided ammo
             popRockAmmos.Add(newPopRockAmmo); //add it to the list
 
@@ -483,6 +490,8 @@ public class PCController : MonoBehaviour
 
         if(c.tag == "SourSplashAmmo")
         {
+            AudioManager.instance.PlaySound("AmmoCollection");
+
             GameObject newSourSplashAmmo = c.gameObject; //store the collided ammo
             sourSplashAmmos.Add(newSourSplashAmmo); //add it to the list
 

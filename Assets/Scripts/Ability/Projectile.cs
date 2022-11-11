@@ -28,6 +28,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            AudioManager.instance.PlaySound("StickyAmmo");
+
             stickyAmmo = Instantiate(stickyAmmoPrefab, transform.position, Quaternion.identity) as GameObject;
                         
             Destroy(gameObject);
@@ -36,7 +38,9 @@ public class Projectile : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bridge"))
         {
-           bridgeAmmo = Instantiate(bridgeAmmoPrefab, collision.transform.position, Quaternion.identity) as GameObject;
+            AudioManager.instance.PlaySound("StickyAmmo");
+
+            bridgeAmmo = Instantiate(bridgeAmmoPrefab, collision.transform.position, Quaternion.identity) as GameObject;
 
            Destroy (collision.gameObject);
 

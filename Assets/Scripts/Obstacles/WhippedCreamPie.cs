@@ -42,6 +42,8 @@ public class WhippedCreamPie : MonoBehaviour
 
     IEnumerator ShowAndHideWhippedCreamExplosion()
     {
+        AudioManager.instance.PlaySound("WhippedCreamSplat");
+
         whippedcreamPieExplosion.SetActive(true); //activate the whipped cream splat
         yield return new WaitForSeconds(explosionTimeOnScreen); //how long it stays on screen before being deactivated
         whippedcreamPieExplosion.SetActive(false);//deactivate the whipped cream splat

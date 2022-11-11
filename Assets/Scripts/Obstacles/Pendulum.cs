@@ -21,6 +21,11 @@ public class Pendulum : MonoBehaviour
 			random = Random.Range(0f, 1f);
 	}
 
+    private void Start()
+    {
+        AudioManager.instance.PlaySound("JawbreakerCanyon");
+    }
+
     // Update is called once per frame
     void Update()
     {

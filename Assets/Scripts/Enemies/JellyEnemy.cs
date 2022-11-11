@@ -137,6 +137,8 @@ public class JellyEnemy : MonoBehaviour
             float interpolation = (-Mathf.Pow(percent, 2) + percent) * 4;
             transform.position = Vector3.Lerp(originalPosition, attackPosition, interpolation);
 
+            AudioManager.instance.PlaySound("JellyCollision");
+
             yield return null;
         }
 

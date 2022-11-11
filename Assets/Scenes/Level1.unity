@@ -11625,51 +11625,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2038253620}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &923189375
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 923189377}
-  - component: {fileID: 923189376}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &923189376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923189375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34c49c98cb211a4b813e05e4015d976, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameAudio: []
---- !u!4 &923189377
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923189375}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 29
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &933094628
 GameObject:
   m_ObjectHideFlags: 0
@@ -15382,6 +15337,205 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c0ed3dbbffc9a41885591f895c0f8d, type: 3}
+--- !u!1 &1303545742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1303545744}
+  - component: {fileID: 1303545743}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1303545743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303545742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34c49c98cb211a4b813e05e4015d976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameAudio:
+  - audioName: TitleBG
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 598546d7e7bf4a649aff749be971ed80, type: 3}
+    playOnAwake: 0
+    audioVolume: 0.7
+    isLooping: 1
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: AmmoCollection
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 62bbfc7970102244cad2094988da090f, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: CandyCaneCollision
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: e8115edfcfde82447a510e6b5e492c8b, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: CharacterDeath
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: fc49cf1a473d9b24e960859d4f50ad5d, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: Checkpoints
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 0a60c02ad8b022141ab0fbc33dc20d97, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: CookieCrumbles
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 6c7839dd7df01ff44a4298cccc5038ff, type: 3}
+    playOnAwake: 0
+    audioVolume: 0.08
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 1
+    maximumHearingDistance: 2
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: JawbreakerCanyon
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 24b52254b4010d4408bdaf867a1ac05d, type: 3}
+    playOnAwake: 0
+    audioVolume: 0.08
+    isLooping: 1
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 1
+    maximumHearingDistance: 2
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: JellyCollision
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 262f92ed8b6e54241b956abbc4a0f7a5, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: Pickup
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 9c6302a7b18dd7b468d85caefc91fa06, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: PopRockAmmo
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: df9353655305dca4abbb0fceaba67348, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: SourSplashAmmo
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 3f721688ad2fac14db9ef6069b5069d1, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: StickyAmmo
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 2cec8f7958c805d4681f6150e61c5c26, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: RawMaterial
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: d0fa35fd4bbbec44590ef25ffedeb3f7, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: WhippedCreamSplat
+    associatedPrefab: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: cfd9e86c2d945fe4bb1c747ac68bc398, type: 3}
+    playOnAwake: 0
+    audioVolume: 1
+    isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+--- !u!4 &1303545744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303545742}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1308234922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1304371118554963287, guid: 39c0ed3dbbffc9a41885591f895c0f8d,

@@ -37,6 +37,8 @@ public class SourSplashProjectile : MonoBehaviour
     {
         yield return new WaitForSeconds(TimeBeforeSourExplosion);
 
+        AudioManager.instance.PlaySound("SourSplashAmmo");
+
         sourSplashAmmo = Instantiate(sourSplashAmmoPrefab, transform.position, Quaternion.identity) as GameObject;
 
         Destroy(gameObject);
