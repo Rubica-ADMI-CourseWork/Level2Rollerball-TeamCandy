@@ -297,6 +297,9 @@ public class PCController : MonoBehaviour
         if(c.tag == "RegularPickup")
         {
             score += 1; //increase the score count by 1
+
+            AudioManager.instance.PlaySound("Pickup");
+
             UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
             UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
 
@@ -309,6 +312,9 @@ public class PCController : MonoBehaviour
         if(c.tag == "SpecialPickup")
         {
             score += 5; //increase the score count by 5
+
+            AudioManager.instance.PlaySound("Pickup");
+
             UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
             UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
 
@@ -320,6 +326,8 @@ public class PCController : MonoBehaviour
 
         if(c.tag == "RawMaterial")
         {
+            AudioManager.instance.PlaySound("RawMaterial");
+
             CandyGameManager.instance.currentNumberOfRawMaterials++; //update the number of raw materials collected
             CandyGameManager.instance.rawMaterialsText.text = CandyGameManager.instance.currentNumberOfRawMaterials.ToString(); //update the number of raw materials collected on the UI
 
@@ -328,11 +336,15 @@ public class PCController : MonoBehaviour
 
         if (c.tag == "Death")
         {
+            AudioManager.instance.PlaySound("CharacterDeath");
+
             OnDeath();
         }
 
         if (c.tag == "CheckpointObjective")
         {
+            AudioManager.instance.PlaySound("Checkpoints");
+
             CandyGameManager.instance.currentNumberOfCheckpointsPassed++; //update the number of checkpoints passed
             CandyGameManager.instance.checkpointsText.text = CandyGameManager.instance.currentNumberOfCheckpointsPassed.ToString(); //update the number of checkpoints passed on the UI
 
