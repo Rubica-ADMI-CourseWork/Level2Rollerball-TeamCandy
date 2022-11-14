@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
             AddNewScore(0, 0);
             AddNewScore(0, 0);
             AddNewScore(0, 0);
-            AddNewScore(0, 0);
+           
 
             //Reload Data
             //Load saved data

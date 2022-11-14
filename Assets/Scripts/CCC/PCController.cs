@@ -67,7 +67,13 @@ public class PCController : MonoBehaviour
     public int score;
     int sessionNumber;
 
+    private void Awake()
+    {
+        //Get session number integer value from key "Session Number", if key not found create key with value = 1
+        sessionNumber = PlayerPrefs.GetInt("SessionNumber", 1);
 
+        Debug.Log("Current session number is:" + sessionNumber);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -493,20 +499,20 @@ public class PCController : MonoBehaviour
                 }
             }
 
-            else
-            {
-                int scoreNumber = score;
+            //else
+            //{
+            //    int scoreNumber = score;
 
-                SendScoreToManager(scoreNumber, sessionNumber);
+            //    SendScoreToManager(scoreNumber, sessionNumber);
 
-                sessionNumber += 1;
+            //    sessionNumber += 1;
 
-                //Update the session number to whatever the current session number is, in the save data
-                PlayerPrefs.SetInt("SessionNumber", sessionNumber);
+            //    //Update the session number to whatever the current session number is, in the save data
+            //    PlayerPrefs.SetInt("SessionNumber", sessionNumber);
 
-                UIManager.instance.victoryScreen.SetActive(true);
-                Time.timeScale = 0f;
-            }
+            //    UIManager.instance.victoryScreen.SetActive(true);
+            //    Time.timeScale = 0f;
+            //}
 
         }
 

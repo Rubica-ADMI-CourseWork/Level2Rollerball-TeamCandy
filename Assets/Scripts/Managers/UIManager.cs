@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text scoreVictoryScreenText;
 
     int sessionNumber; //Variable to store Game Session Number, which updates everytime a new game is played, each dice roll is a session in this case
-
+   
     PCController pcController;
 
     [Header("Ammo Variables")]
@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("Current session number is:" + sessionNumber);
 
-        pcController = GetComponent<PCController>();
+        pcController = GameObject.Find("PC").GetComponent<PCController>();
     }
 
     // Start is called before the first frame update
@@ -132,10 +132,9 @@ public class UIManager : MonoBehaviour
     }
 
     public void PauseReplayButton()
-    {
-
+    {        
         int scoreNumber = pcController.score;
-
+                
         SendScoreToManager(scoreNumber, sessionNumber);
 
         sessionNumber += 1;
