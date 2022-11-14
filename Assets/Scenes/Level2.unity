@@ -2908,6 +2908,54 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1 &1124769990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1124769992}
+  - component: {fileID: 1124769991}
+  m_Layer: 0
+  m_Name: HighScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1124769991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124769990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22e77ef783659343b21c86b89e321ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreUIPrefab: {fileID: 4126343212363946844, guid: 7e46fbef99622c84ea2c60463e900aff,
+    type: 3}
+  leaderboardPanel: {fileID: 0}
+  spawnedScoreUIPrefabs: []
+--- !u!4 &1124769992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124769990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1138510302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,9 +3257,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevelConditionState: 0
   level1Panel: {fileID: 1290506852}
+  currentNumberOfCheckpointsPassed: 0
+  totalnumberOfCheckpoints: 0
+  checkpointsText: {fileID: 0}
   level2Panel: {fileID: 2034193004}
+  currentNumberOfRawMaterials: 0
+  totalnumberOfRawMaterials: 0
+  rawMaterialsText: {fileID: 0}
+  timerText: {fileID: 0}
+  currentTime: 0
   level3Panel: {fileID: 758958903}
+  currentNumberOfPickups: 0
+  totalNumberOfPickups: 0
+  extraPickups: 0
+  pickupText: {fileID: 0}
   level4Panel: {fileID: 300757776}
+  currentNumberOfEnemies: 0
+  totalNumberOfEnemies: 0
+  extraEnemies: 0
+  enemiesText: {fileID: 0}
 --- !u!4 &1283909076
 Transform:
   m_ObjectHideFlags: 0

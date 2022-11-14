@@ -65,6 +65,7 @@ public class PCController : MonoBehaviour
 
     [Header("Score Variables")]
     public int score;
+    int sessionNumber;
 
 
 
@@ -366,7 +367,16 @@ public class PCController : MonoBehaviour
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level1"))
             {
                 if (CandyGameManager.instance.currentNumberOfCheckpointsPassed >= CandyGameManager.instance.totalnumberOfCheckpoints)
-                {                    
+                {
+                    int scoreNumber = score;
+
+                    SendScoreToManager(scoreNumber, sessionNumber);
+
+                    sessionNumber += 1;
+
+                    //Update the session number to whatever the current session number is, in the save data
+                    PlayerPrefs.SetInt("SessionNumber", sessionNumber);
+
                     UIManager.instance.victoryScreen.SetActive(true);
                     Time.timeScale = 0f;
                 }           
@@ -394,7 +404,16 @@ public class PCController : MonoBehaviour
                         UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
                         UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
                     }
-                    
+
+                    int scoreNumber = score;
+
+                    SendScoreToManager(scoreNumber, sessionNumber);
+
+                    sessionNumber += 1;
+
+                    //Update the session number to whatever the current session number is, in the save data
+                    PlayerPrefs.SetInt("SessionNumber", sessionNumber);
+
                     UIManager.instance.victoryScreen.SetActive(true);
                     Time.timeScale = 0f;
                 }
@@ -422,6 +441,15 @@ public class PCController : MonoBehaviour
                         UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
                         UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
                     }
+
+                    int scoreNumber = score;
+
+                    SendScoreToManager(scoreNumber, sessionNumber);
+
+                    sessionNumber += 1;
+
+                    //Update the session number to whatever the current session number is, in the save data
+                    PlayerPrefs.SetInt("SessionNumber", sessionNumber);
 
                     UIManager.instance.victoryScreen.SetActive(true);
                     Time.timeScale = 0f;
@@ -451,6 +479,15 @@ public class PCController : MonoBehaviour
                         UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
                     }
 
+                    int scoreNumber = score;
+
+                    SendScoreToManager(scoreNumber, sessionNumber);
+
+                    sessionNumber += 1;
+
+                    //Update the session number to whatever the current session number is, in the save data
+                    PlayerPrefs.SetInt("SessionNumber", sessionNumber);
+
                     UIManager.instance.victoryScreen.SetActive(true);
                     Time.timeScale = 0f;
                 }
@@ -458,6 +495,15 @@ public class PCController : MonoBehaviour
 
             else
             {
+                int scoreNumber = score;
+
+                SendScoreToManager(scoreNumber, sessionNumber);
+
+                sessionNumber += 1;
+
+                //Update the session number to whatever the current session number is, in the save data
+                PlayerPrefs.SetInt("SessionNumber", sessionNumber);
+
                 UIManager.instance.victoryScreen.SetActive(true);
                 Time.timeScale = 0f;
             }
@@ -500,7 +546,12 @@ public class PCController : MonoBehaviour
             Destroy(c.gameObject); //Destroy the ammo pickup after collision
         }
     }
-        
+
+    public void SendScoreToManager(int score, int sessionNumber)
+    {
+        ScoreManager.instance.AddNewScore(score, sessionNumber);
+    }
+
 
     void OnDeath()
     {
