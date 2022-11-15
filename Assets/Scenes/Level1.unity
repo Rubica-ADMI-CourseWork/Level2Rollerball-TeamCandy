@@ -15590,23 +15590,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameAudio:
-  - audioName: TitleBG
-    associatedPrefab: {fileID: 2016372750}
-    audioClip: {fileID: 8300000, guid: 598546d7e7bf4a649aff749be971ed80, type: 3}
-    playOnAwake: 0
-    audioVolume: 0.7
-    isLooping: 1
-    audioSpatialBlend: 0.5
-    minimumHearingDistance: 0
-    maximumHearingDistance: 0
-    audio3dEffect: 0
-    audioSource: {fileID: 0}
   - audioName: AmmoCollection
     associatedPrefab: {fileID: 2016372750}
     audioClip: {fileID: 8300000, guid: 62bbfc7970102244cad2094988da090f, type: 3}
     playOnAwake: 0
     audioVolume: 1
     isLooping: 0
+    audioSpatialBlend: 0.5
+    minimumHearingDistance: 0
+    maximumHearingDistance: 0
+    audio3dEffect: 0
+    audioSource: {fileID: 0}
+  - audioName: TitleBG
+    associatedPrefab: {fileID: 2016372750}
+    audioClip: {fileID: 8300000, guid: 4903efcaa155b8b449a55c7354b5be43, type: 3}
+    playOnAwake: 0
+    audioVolume: 0.4
+    isLooping: 1
     audioSpatialBlend: 0.5
     minimumHearingDistance: 0
     maximumHearingDistance: 0

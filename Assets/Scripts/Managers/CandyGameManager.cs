@@ -88,7 +88,7 @@ public class CandyGameManager : MonoBehaviour
         totalNumberOfPickups = 15;
 
         //Level 4 stuff
-        totalNumberOfEnemies = 20;
+        totalNumberOfEnemies = 10;
 
     }
 

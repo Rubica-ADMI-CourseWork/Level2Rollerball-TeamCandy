@@ -125,6 +125,36 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void LevelsSelectionButton()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("LevelSelection");
+    }
+
+    public void ChooseLevel1Button()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void ChooseLevel2Button()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void ChooseLevel3Button()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void ChooseLevel4Button()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level4");
+    }
+
     public void VictoryScreenReplayButton()
     {
         Time.timeScale = 1f;

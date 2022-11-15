@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7490196}
+  m_Color: {r: 0.5283019, g: 0.16696332, b: 0.37316898, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1130,9 +1130,9 @@ MonoBehaviour:
   gameAudio:
   - audioName: TitleBG
     associatedPrefab: {fileID: 895110712}
-    audioClip: {fileID: 8300000, guid: 598546d7e7bf4a649aff749be971ed80, type: 3}
+    audioClip: {fileID: 8300000, guid: 4903efcaa155b8b449a55c7354b5be43, type: 3}
     playOnAwake: 0
-    audioVolume: 0.7
+    audioVolume: 0.4
     isLooping: 1
     audioSpatialBlend: 0.5
     minimumHearingDistance: 0
