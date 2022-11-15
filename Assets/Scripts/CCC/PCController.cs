@@ -109,7 +109,7 @@ public class PCController : MonoBehaviour
                 {
                     //Debug.Log(hit.point);
 
-                    if (Input.GetMouseButtonDown(0) && stickyAmmos.Count > 0 && !EventSystem.current.IsPointerOverGameObject())
+                    if (Input.GetMouseButtonDown(0) && stickyAmmos.Count > 0)
                     {
                         LaunchProjectile(hit.point);
 
@@ -162,7 +162,7 @@ public class PCController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 30f))
         {                        
-            if (Input.GetMouseButtonDown(0) && popRockAmmos.Count > 0 && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0) && popRockAmmos.Count > 0)
             {
 
                 GameObject bullet = Instantiate(popRockProjectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z), Quaternion.identity) as GameObject;
@@ -226,7 +226,7 @@ public class PCController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, 30f))
         {           
 
-            if (Input.GetMouseButtonDown(0) && sourSplashAmmos.Count > 0 && !EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0) && sourSplashAmmos.Count > 0)
             {
 
                 GameObject bullet = Instantiate(sourSplashProjectilePrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), Quaternion.identity) as GameObject;
@@ -498,21 +498,6 @@ public class PCController : MonoBehaviour
                     Time.timeScale = 0f;
                 }
             }
-
-            //else
-            //{
-            //    int scoreNumber = score;
-
-            //    SendScoreToManager(scoreNumber, sessionNumber);
-
-            //    sessionNumber += 1;
-
-            //    //Update the session number to whatever the current session number is, in the save data
-            //    PlayerPrefs.SetInt("SessionNumber", sessionNumber);
-
-            //    UIManager.instance.victoryScreen.SetActive(true);
-            //    Time.timeScale = 0f;
-            //}
 
         }
 
