@@ -34,6 +34,7 @@ public class CameraControls : MonoBehaviour
     {
         inputReceiver.OnSideToSideAccelerometerMovement += SetTurnInput;
     }
+    
     private void Update()
     {
         offset = target.transform.position;
