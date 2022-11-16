@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [Header("UI Game Panels Variables")]
     public GameObject victoryScreen;
     public GameObject pausePanel;
+    public GameObject finalVictoryScreen;
 
     bool isPaused = false;
 
@@ -53,6 +54,7 @@ public class UIManager : MonoBehaviour
     {
         victoryScreen.SetActive(false);
         pausePanel.SetActive(false);
+        finalVictoryScreen.SetActive(false);
     }
 
     // Update is called once per frame

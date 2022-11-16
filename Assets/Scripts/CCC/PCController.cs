@@ -494,7 +494,7 @@ public class PCController : MonoBehaviour
                     //Update the session number to whatever the current session number is, in the save data
                     PlayerPrefs.SetInt("SessionNumber", sessionNumber);
 
-                    UIManager.instance.victoryScreen.SetActive(true);
+                    UIManager.instance.finalVictoryScreen.SetActive(true);
                     Time.timeScale = 0f;
                 }
             }
