@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 4186943147559246388}
   - component: {fileID: 4754208359919115842}
   - component: {fileID: 4123204393004012271}
+  - component: {fileID: 6627845877703638853}
   m_Layer: 0
   m_Name: SpinningLollies
   m_TagString: SpinningLollies
@@ -198,10 +199,23 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.001
-  m_Height: 0.05835265
+  m_Radius: 0.001309222
+  m_Height: 0.03869841
   m_Direction: 1
-  m_Center: {x: 0, y: 0.019176332, z: 0}
+  m_Center: {x: -0.00036967217, y: 0.029074227, z: -9.354288e-18}
+--- !u!65 &6627845877703638853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241506117133757328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020695219, y: 0.020493302, z: 0.0036778955}
+  m_Center: {x: 0.000037458096, y: 0, z: 0.00005599785}
 --- !u!1 &8873615436144291278
 GameObject:
   m_ObjectHideFlags: 0

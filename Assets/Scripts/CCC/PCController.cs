@@ -554,7 +554,7 @@ public class PCController : MonoBehaviour
         gameObject.transform.position = new Vector3(recentCheckpoint.position.x, recentCheckpoint.position.y + 3f, recentCheckpoint.position.z); //on death the player position is moved to the recently passed checkpoint as stored in the list
 
         //Camera.main.transform.position = new Vector3(recentCheckpoint.position.x, recentCheckpoint.position.y + 6f, recentCheckpoint.position.z - 9f); //Resetting the camera position
-
+        //Camera.main.transform.LookAt(transform.position);
     }
 
     public void StickyAmmoSelected()
