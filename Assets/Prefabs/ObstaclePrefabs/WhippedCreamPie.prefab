@@ -294,7 +294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3615752396069101651}
-  - {fileID: 1461290645419732325}
+  - {fileID: 1114807464757438040}
   - {fileID: 45191467}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whippedcreamPieExplosion: {fileID: 1758507556}
-  whippedcreamPieVisuals: {fileID: 2237265047680743391}
+  whippedcreamPieVisuals: {fileID: 302664588898499810}
   explosionTimeOnScreen: 5
   timeBeforeRespawn: 20
 --- !u!54 &7911477001745661349
@@ -536,84 +536,84 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &1426855364709927566
+--- !u!1001 &644628303989129651
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 3615752396919524702}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.67
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.08
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 25797574e4d7a0b4294d85d190fd74f4,
+    - target: {fileID: 919132149155446097, guid: 537a1bb30aea129479a1c6649ffc3e89,
         type: 3}
       propertyPath: m_Name
-      value: Whippedcream
+      value: NewWhippedcream
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 25797574e4d7a0b4294d85d190fd74f4, type: 3}
---- !u!4 &1461290645419732325 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 25797574e4d7a0b4294d85d190fd74f4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1426855364709927566}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2237265047680743391 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 537a1bb30aea129479a1c6649ffc3e89, type: 3}
+--- !u!1 &302664588898499810 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 25797574e4d7a0b4294d85d190fd74f4,
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 537a1bb30aea129479a1c6649ffc3e89,
     type: 3}
-  m_PrefabInstance: {fileID: 1426855364709927566}
+  m_PrefabInstance: {fileID: 644628303989129651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1114807464757438040 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 537a1bb30aea129479a1c6649ffc3e89,
+    type: 3}
+  m_PrefabInstance: {fileID: 644628303989129651}
   m_PrefabAsset: {fileID: 0}
