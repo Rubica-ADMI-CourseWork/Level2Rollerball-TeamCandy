@@ -73,6 +73,9 @@ public class CandyGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Screen doesn't turn off during gameplay
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         level1Panel.SetActive(false);
         level2Panel.SetActive(false);
         level3Panel.SetActive(false);

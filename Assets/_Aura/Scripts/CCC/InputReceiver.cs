@@ -44,10 +44,12 @@ public class InputReceiver : MonoBehaviour
             if( prevValue > backForwardCutOff)
             {
                 finalForwardBackInput = 1f;
+                isMovingForward = false;
             }
             if(prevValue < backForwardCutOff)
             {
                 finalForwardBackInput = -1f;
+                isMovingForward = true;
             }          
         }
         else
@@ -65,15 +67,15 @@ public class InputReceiver : MonoBehaviour
 
     private void LateUpdate()
     {
-       
-        if(yAxisAccelerometerInputValue > prevValue)
-        {
-            isMovingForward = true;
-        }
-        if(yAxisAccelerometerInputValue < prevValue)
-        {
-            isMovingForward = false;
-        }
+       //ToDo:commented out because not in use(apparently)
+        //if(yAxisAccelerometerInputValue > prevValue)
+        //{
+        //    isMovingForward = true;
+        //}
+        //if(yAxisAccelerometerInputValue < prevValue)
+        //{
+        //    isMovingForward = false;
+        //}
    
     }
 }
