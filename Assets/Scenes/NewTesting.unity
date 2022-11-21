@@ -16588,6 +16588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 767892332}
   pausePanel: {fileID: 2113372911}
+  finalVictoryScreen: {fileID: 0}
   scoreText: {fileID: 523187269}
   scoreVictoryScreenText: {fileID: 1445455445}
   stickyAmmoText: {fileID: 1322987999}

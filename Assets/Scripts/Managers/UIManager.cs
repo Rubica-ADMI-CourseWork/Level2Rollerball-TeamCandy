@@ -182,4 +182,5 @@ public class UIManager : MonoBehaviour
     {
         ScoreManager.instance.AddNewScore(score, sessionNumber);
     }
+
 }

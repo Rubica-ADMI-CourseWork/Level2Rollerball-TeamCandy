@@ -11,6 +11,10 @@ public class PCMovement : MonoBehaviour
     [Header("Values modify forward and side speed seperately")]
     [SerializeField] float speedModifier;
     [SerializeField] float sideSpeedModifier;
+    [Header("Fixed minimum and maximum pc speeds")]
+    [SerializeField] float minSpeed, maxSpeed;
+    [Tooltip("Serialized for testing purposes")]
+    [SerializeField]Vector2 currentPcSpeed;
 
     [Header("Determines force mode type applied to Rigid body")]
     [SerializeField] ForceTypes forwardMovementForceType;
@@ -66,6 +70,7 @@ public class PCMovement : MonoBehaviour
         {
             case ForwardVectorType.MovementFocusForwardVector:
                 ForwardMovement = ForwardBackInput * movementFocus.GetForwardVector() * speedModifier;
+
                 break;
             case ForwardVectorType.CamForwardVector:
                 ForwardMovement = ForwardBackInput * cameraControls.GetForwardVector() * speedModifier;
@@ -85,6 +90,10 @@ public class PCMovement : MonoBehaviour
         playerRB.AddForce(ForwardMovement, forwardForceMode);
         playerRB.AddForce(SideMovement, sideForceMode);
 
+        //Debug.Log($"PCMovement: Fixed Update() Forward Movement: {ForwardMovement}");
+        Debug.Log($"PCMovement: Fixed Update() Forward Velocity: {playerRB.velocity.z}");
+        currentPcSpeed = playerRB.velocity;
+        SpeedClamp(currentPcSpeed);
         //TurnCamBasedOnVelocity(playerRB.velocity);
     }
     private void OnDisable()
@@ -158,4 +167,15 @@ public class PCMovement : MonoBehaviour
     }
     #endregion
 
+    void SpeedClamp(Vector2 currentPcSpeed)
+    {
+        //if (currentPcSpeed >= maxSpeed)
+        //{
+        //    currentPcSpeed = maxSpeed;
+        //}
+        //else if (currentPcSpeed <= minSpeed)
+        //{
+        //    currentPcSpeed = minSpeed;
+        //}
+    }
 }
