@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-
+using UnityEngine.VFX;
 
 public class PCController : MonoBehaviour
 {
@@ -66,6 +66,16 @@ public class PCController : MonoBehaviour
     [Header("Score Variables")]
     public int score;
     int sessionNumber;
+
+    //[Header("VFX Variables")]
+    //public GameObject checkpointVfx;
+    //VisualEffect checkpointVfxGraph;
+
+    //Color cylinderColor;
+    //Color ringColor;
+
+    //public Color newCylinderColor;
+    //public Color newRingColor;
 
     private void Awake()
     {
@@ -365,6 +375,9 @@ public class PCController : MonoBehaviour
         {
             Transform newCheckpoint = c.gameObject.transform; //store the collided checkpoint
             levelCheckpoints.Add(newCheckpoint); //add it to the list                        
+
+            //Change the color of the vfxgraph on collision
+            //ChangeCheckpointColor();
         }
 
         if(c.tag == "FinalLevelCheckpoint")
@@ -543,6 +556,18 @@ public class PCController : MonoBehaviour
         ScoreManager.instance.AddNewScore(score, sessionNumber);
     }
 
+    //void ChangeCheckpointColor()
+    //{
+    //    Debug.Log("I'm changing color");
+
+    //    checkpointVfxGraph = checkpointVfx.GetComponent<VisualEffect>();
+
+    //    cylinderColor = checkpointVfxGraph.GetVector4("Cylinder Color"); //Vector4 is to get the color variable
+    //    ringColor = checkpointVfxGraph.GetVector4("RingColor"); //Vector4 is to get the color variable
+
+    //    cylinderColor = newCylinderColor;
+    //    ringColor = newRingColor;
+    //}
 
     void OnDeath()
     {
