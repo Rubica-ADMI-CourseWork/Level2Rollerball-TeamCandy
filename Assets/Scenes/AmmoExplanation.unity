@@ -263,7 +263,6 @@ GameObject:
   - component: {fileID: 255372819}
   - component: {fileID: 255372818}
   - component: {fileID: 255372822}
-  - component: {fileID: 255372821}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -337,19 +336,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &255372821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255372817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b013f2aa9bade744b71ac984b1fbfc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitTime: 7
 --- !u!114 &255372822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,7 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameAudio:
   - audioName: TitleBG
-    associatedPrefab: {fileID: 0}
+    associatedPrefab: {fileID: 255372817}
     audioClip: {fileID: 8300000, guid: 4903efcaa155b8b449a55c7354b5be43, type: 3}
     playOnAwake: 0
     audioVolume: 0.4
@@ -1854,8 +1840,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 255372821}
-        m_TargetAssemblyTypeName: AmmoExplanationScene, Assembly-CSharp
+      - m_Target: {fileID: 202356148}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: SkipButton
         m_Mode: 1
         m_Arguments:
@@ -1934,6 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

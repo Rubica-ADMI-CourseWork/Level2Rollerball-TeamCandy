@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReceiver: {fileID: 0}
-  speedModifier: 3.5
+  speedModifier: 2
   sideSpeedModifier: 12.15
   minSpeed: 0
   maxSpeed: 0
@@ -577,6 +577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PC_LessPieces
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 114f09820d1b1894987b7ad8f99d5f29,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball
       objectReference: {fileID: 0}
     - target: {fileID: 926974036608767424, guid: 114f09820d1b1894987b7ad8f99d5f29,
         type: 3}

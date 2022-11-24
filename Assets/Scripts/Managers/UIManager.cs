@@ -163,6 +163,18 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void SkipButton()
+    {
+        LoadNextScene();
+    }
+
+    void LoadNextScene()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
     public void PauseReplayButton()
     {        
         int scoreNumber = pcController.score;

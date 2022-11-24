@@ -85,7 +85,7 @@ public class CandyGameManager : MonoBehaviour
         totalnumberOfCheckpoints = GameObject.FindGameObjectsWithTag("CheckpointObjective").Length; //Get the total number of checkpoints in the scene
 
         //Level 2 stuff
-        totalnumberOfRawMaterials = GameObject.FindGameObjectsWithTag("RawMaterial").Length; //Get the total number of raw materials in the scene
+        totalnumberOfRawMaterials = 15;
 
         //Level 3 stuff
         totalNumberOfPickups = 15;

@@ -160,12 +160,13 @@ MonoBehaviour:
   temp: {fileID: 0}
   jellyEnemyVisuals: {fileID: 774966367902604091}
   timeBeforeRespawn: 30
-  proximityDstFromTarget: 10
+  proximityDstFromTarget: 20
   waypoints:
   - {fileID: 8611285533071166276}
   - {fileID: 8611285531833597426}
   - {fileID: 8611285532102487324}
   - {fileID: 8611285531986722946}
+  attackSpeed: 5
   specialPickupPrefab: {fileID: 5522017194114242021, guid: 473a5a7e9ef97ec42a0c5f74e1746df3,
     type: 3}
 --- !u!195 &8611285532555938421
@@ -178,7 +179,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

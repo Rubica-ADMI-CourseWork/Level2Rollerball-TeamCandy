@@ -45,7 +45,7 @@ public class JellyEnemy : MonoBehaviour
     float timeBetweenAttacks = 1;
     float nextAttackTime;
 
-    float attackSpeed;
+    public float attackSpeed = 3f;
     float percent;
 
 
@@ -100,7 +100,7 @@ public class JellyEnemy : MonoBehaviour
             if (sqrDstToTarget < Mathf.Pow (attackDistanceThreshold, 2))
             {
                 nextAttackTime = Time.time + timeBetweenAttacks;                
-                StartCoroutine(Attack());
+                //StartCoroutine(Attack());
             }
 
         }
@@ -127,8 +127,7 @@ public class JellyEnemy : MonoBehaviour
 
         originalPosition = transform.position;
         attackPosition = target.position;
-
-        attackSpeed = 3f;
+                
         percent = 0;
 
         while (percent <= 1)
