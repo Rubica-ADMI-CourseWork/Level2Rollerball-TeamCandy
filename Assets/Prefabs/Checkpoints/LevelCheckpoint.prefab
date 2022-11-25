@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4545193164204037267}
   - component: {fileID: 4545193164204037268}
+  - component: {fileID: 8151562733094769869}
   m_Layer: 0
   m_Name: LevelCheckpoint
   m_TagString: LevelCheckpoint
@@ -130,6 +131,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 10, z: 2.5}
   m_Center: {x: 0, y: 5, z: 0}
+--- !u!114 &8151562733094769869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4545193164204037269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c27d178701655d48bc6d20252d01332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointVfxList: {fileID: 7052349984170526326}
+  newCylinderColor: {r: 0.082903184, g: 0.764151, b: 0.14446166, a: 0}
+  newRingColor: {r: 0.30113026, g: 0.9528302, b: 0.3610567, a: 1}
 --- !u!1 &7052349984170526326
 GameObject:
   m_ObjectHideFlags: 0

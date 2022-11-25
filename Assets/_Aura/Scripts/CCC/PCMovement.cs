@@ -91,7 +91,7 @@ public class PCMovement : MonoBehaviour
         playerRB.AddForce(SideMovement, sideForceMode);
 
         //Debug.Log($"PCMovement: Fixed Update() Forward Movement: {ForwardMovement}");
-        Debug.Log($"PCMovement: Fixed Update() Forward Velocity: {playerRB.velocity.z}");
+        //Debug.Log($"PCMovement: Fixed Update() Forward Velocity: {playerRB.velocity.z}");
         currentPcSpeed = playerRB.velocity;
         SpeedClamp(currentPcSpeed);
         //TurnCamBasedOnVelocity(playerRB.velocity);
