@@ -6,8 +6,11 @@ using UnityEngine.VFX;
 public class CheckpointColorChange : MonoBehaviour
 {
     [Header("VFX Variables")]
-    public GameObject checkpointVfxList;
+    public GameObject checkpointVfxMain;
     VisualEffect checkpointVfxGraph;
+
+    public GameObject checkpointVfxSecond;
+    VisualEffect checkpointVfxGraphSecond;
 
     Color cylinderColor;
     Color ringColor;
@@ -41,9 +44,18 @@ public class CheckpointColorChange : MonoBehaviour
     {
         Debug.Log("I'm changing color");
 
-        checkpointVfxGraph = checkpointVfxList.GetComponent<VisualEffect>();
+        checkpointVfxGraph = checkpointVfxMain.GetComponent<VisualEffect>();
 
         checkpointVfxGraph.SetVector4("Cylinder Color", newCylinderColor); //Vector 4 is to change color variable, so get the string name of the current variable and change it to the new variable
         checkpointVfxGraph.SetVector4("RingColor", newRingColor); //Vector 4 is to change color variable, so get the string name of the current variable and change it to the new variable
+
+        if (checkpointVfxSecond != null)
+        {
+            checkpointVfxGraphSecond = checkpointVfxSecond.GetComponent<VisualEffect>();
+
+            checkpointVfxGraphSecond.SetVector4("Cylinder Color", newCylinderColor); //Vector 4 is to change color variable, so get the string name of the current variable and change it to the new variable
+            checkpointVfxGraphSecond.SetVector4("RingColor", newRingColor); //Vector 4 is to change color variable, so get the string name of the current variable and change it to the new variable
+        }
+
     }
 }

@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c27d178701655d48bc6d20252d01332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointVfxList: {fileID: 7052349984170526326}
+  checkpointVfxMain: {fileID: 7052349984170526326}
+  checkpointVfxSecond: {fileID: 0}
   newCylinderColor: {r: 0.082903184, g: 0.764151, b: 0.14446166, a: 0}
   newRingColor: {r: 0.30113026, g: 0.9528302, b: 0.3610567, a: 1}
 --- !u!1 &7052349984170526326
