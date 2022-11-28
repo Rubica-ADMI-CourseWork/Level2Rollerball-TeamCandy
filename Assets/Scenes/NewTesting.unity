@@ -885,7 +885,7 @@ PrefabInstance:
     - target: {fileID: 2151384204179005305, guid: 9796258031bbf72469091829a159229e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.4
+      value: -23.6
       objectReference: {fileID: 0}
     - target: {fileID: 2151384204179005305, guid: 9796258031bbf72469091829a159229e,
         type: 3}
@@ -13043,7 +13043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a2d3835712d844b1a502bc5ba24e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevelConditionState: 1
+  currentLevelConditionState: 0
   level1Panel: {fileID: 975233744}
   currentNumberOfCheckpointsPassed: 0
   totalnumberOfCheckpoints: 0
@@ -13055,6 +13055,11 @@ MonoBehaviour:
   timerText: {fileID: 615674935}
   currentTime: 0
   level3Panel: {fileID: 1651890714}
+  lv3strikeThrough: {fileID: 0}
+  lv3newObjective: {fileID: 0}
+  lv3TeleportationPanel: {fileID: 0}
+  lv3TeleportationButton: {fileID: 0}
+  lv3PanelCloseButton: {fileID: 0}
   currentNumberOfPickups: 0
   totalNumberOfPickups: 0
   extraPickups: 0

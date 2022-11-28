@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1990364956067150451}
   - component: {fileID: 1990364956067150448}
-  - component: {fileID: 963581216456351750}
+  - component: {fileID: 4862342471143277694}
   m_Layer: 0
   m_Name: FinalLevelCheckpoint
   m_TagString: FinalLevelCheckpoint
@@ -50,7 +50,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 2}
   m_Center: {x: 0, y: 5, z: 0}
---- !u!114 &963581216456351750
+--- !u!114 &4862342471143277694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

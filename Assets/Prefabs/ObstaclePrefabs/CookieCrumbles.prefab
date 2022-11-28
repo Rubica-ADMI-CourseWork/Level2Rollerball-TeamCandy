@@ -106,7 +106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6319120654766972719}
-  - component: {fileID: 6319120654766972718}
   - component: {fileID: 7382105893089255012}
   - component: {fileID: -9027491003820034019}
   - component: {fileID: 6794449409039463152}
@@ -142,21 +141,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6319120654766972718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6319120654766972704}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f21f410de32f694ea141e6ac60ae26e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallingPlatform: {fileID: 2028835613527693036}
-  initialTimeBeforeItStartsFalling: 0
-  timeItTakesToReform: 3
 --- !u!114 &7382105893089255012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e380dadfb04dbb24ba7e1d68d29229b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallTime: 10
+  fallTime: 5
   respawnTime: 30
   cookieVisuals: {fileID: 2028835613527693036}
 --- !u!82 &-9027491003820034019

@@ -40,12 +40,19 @@ public class CandyGameManager : MonoBehaviour
 
     [Header("Level 3 Variables")]
     public GameObject level3Panel;
+    public GameObject lv3strikeThrough;
+    public GameObject lv3newObjective;
+    public GameObject lv3TeleportationPanel;
+    public GameObject lv3TeleportationButton;
+    public GameObject lv3PanelCloseButton;
 
     public int currentNumberOfPickups;
     public int totalNumberOfPickups;
     public int extraPickups;
 
     public TMP_Text pickupText;
+
+    bool closingTeleportationPanel = false;
 
     [Header("Level 4 Variables")]
     public GameObject level4Panel;
@@ -77,8 +84,17 @@ public class CandyGameManager : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         level1Panel.SetActive(false);
+
         level2Panel.SetActive(false);
+
         level3Panel.SetActive(false);
+        lv3strikeThrough.SetActive(false);
+        lv3newObjective.SetActive(false);
+        lv3TeleportationPanel.SetActive(false);
+        lv3PanelCloseButton.SetActive(false);
+        lv3TeleportationButton.SetActive(false);
+        
+
         level4Panel.SetActive(false);
 
         //Level 1 stuff
@@ -89,7 +105,7 @@ public class CandyGameManager : MonoBehaviour
 
         //Level 3 stuff
         totalNumberOfPickups = 15;
-
+        
         //Level 4 stuff
         totalNumberOfEnemies = 10;
 
@@ -146,6 +162,24 @@ public class CandyGameManager : MonoBehaviour
                 level3Panel.SetActive(true);
 
                 pickupText.text = $"{currentNumberOfPickups} / {totalNumberOfPickups}"; //What the UI text displays
+
+                if (currentNumberOfPickups == totalNumberOfPickups)
+                {
+                    Time.timeScale = 0f;
+
+                    lv3strikeThrough.SetActive(true);
+                    lv3newObjective.SetActive(true);
+                    lv3TeleportationPanel.SetActive(true);
+                    lv3PanelCloseButton.SetActive(true);
+                    lv3TeleportationButton.SetActive(true);
+                }
+                if (closingTeleportationPanel == true)
+                {
+                    lv3TeleportationPanel.SetActive(false);
+                    lv3PanelCloseButton.SetActive(false);
+
+                    Time.timeScale = 1f;
+                }
 
                 extraPickups = currentNumberOfPickups - totalNumberOfPickups; //get the extra pickups and give bonuses accordingly
 
@@ -204,5 +238,9 @@ public class CandyGameManager : MonoBehaviour
 
     }
 
-   
+    public void CloseTeleportationPanelButton()
+    {        
+        closingTeleportationPanel = true;       
+    }
+
 }

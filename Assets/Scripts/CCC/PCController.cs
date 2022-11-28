@@ -67,15 +67,11 @@ public class PCController : MonoBehaviour
     public int score;
     int sessionNumber;
 
-    //[Header("VFX Variables")]
-    //public GameObject checkpointVfx;
-    //VisualEffect checkpointVfxGraph;
+    [Header("Teleportation Variables")]
+    public GameObject teleportationPoint;
 
-    //Color cylinderColor;
-    //Color ringColor;
-
-    //public Color newCylinderColor;
-    //public Color newRingColor;
+    [Header("VFX Variables")]
+    FinalCheckpointColorChange finalCheckpointColorChange;
 
     private void Awake()
     {
@@ -83,6 +79,8 @@ public class PCController : MonoBehaviour
         sessionNumber = PlayerPrefs.GetInt("SessionNumber", 1);
 
         Debug.Log("Current session number is:" + sessionNumber);
+
+        finalCheckpointColorChange = GetComponent<FinalCheckpointColorChange>();
     }
 
     // Start is called before the first frame update
@@ -556,19 +554,7 @@ public class PCController : MonoBehaviour
         ScoreManager.instance.AddNewScore(score, sessionNumber);
     }
 
-    //void ChangeCheckpointColor()
-    //{
-    //    Debug.Log("I'm changing color");
-
-    //    checkpointVfxGraph = checkpointVfx.GetComponent<VisualEffect>();
-
-    //    cylinderColor = checkpointVfxGraph.GetVector4("Cylinder Color"); //Vector4 is to get the color variable
-    //    ringColor = checkpointVfxGraph.GetVector4("RingColor"); //Vector4 is to get the color variable
-
-    //    cylinderColor = newCylinderColor;
-    //    ringColor = newRingColor;
-    //}
-
+    
     void OnDeath()
     {
         rb.velocity = Vector3.zero;
@@ -606,5 +592,16 @@ public class PCController : MonoBehaviour
         }
     }
 
+    public void TeleportButton()
+    {
+        if(teleportationPoint != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            gameObject.transform.position = new Vector3(teleportationPoint.transform.position.x, teleportationPoint.transform.position.y + 3f, teleportationPoint.transform.position.z); // pc teleports to the finish line
+
+        }
+    }
     
 }

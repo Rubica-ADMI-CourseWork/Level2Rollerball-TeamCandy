@@ -13,8 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject finalVictoryScreen;
 
-    bool isPaused = false;
-
+    bool isPaused = false;  
 
     [Header("Score Variables")]
     public TMP_Text scoreText;
@@ -199,4 +198,5 @@ public class UIManager : MonoBehaviour
         ScoreManager.instance.AddNewScore(score, sessionNumber);
     }
 
+    
 }
