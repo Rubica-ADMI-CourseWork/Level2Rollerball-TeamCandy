@@ -13,7 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject finalVictoryScreen;
 
-    bool isPaused = false;  
+    [SerializeField]
+    bool isPaused;
 
     [Header("Score Variables")]
     public TMP_Text scoreText;
@@ -58,13 +59,10 @@ public class UIManager : MonoBehaviour
         {
             finalVictoryScreen.SetActive(false);
         }
+        isPaused = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     public void ExitGame()
     {
@@ -116,53 +114,64 @@ public class UIManager : MonoBehaviour
 
     public void PauseGameButton()
     {
-        if (isPaused)
+        
+        if (isPaused == false)
         {
-            pausePanel.SetActive(false);
-            Time.timeScale = 1;
-            isPaused = false;
-        }
-        else
-        {
+            Debug.Log("Inside PauseGameButton(): Pausing..");
+
             pausePanel.SetActive(true);
-            Time.timeScale = 0;
+            TimeManager.Instance.PauseGame(true);
             isPaused = true;
+        }
+        else if(isPaused == true)
+        {
+            Debug.Log("Inside PauseGameButton(): UnPausing..");
+
+            pausePanel.SetActive(false);
+            TimeManager.Instance.PauseGame(false);
+            isPaused = false;
         }
     }
 
     public void LevelsSelectionButton()
     {
-        Time.timeScale = 1f;
+        TimeManager.Instance.PauseGame(false);
+
         SceneManager.LoadScene("LevelSelection");
     }
 
     public void ChooseLevel1Button()
     {
-        Time.timeScale = 1f;
+        TimeManager.Instance.PauseGame(false);
+
         SceneManager.LoadScene("Level1");
     }
 
     public void ChooseLevel2Button()
     {
-        Time.timeScale = 1f;
+        TimeManager.Instance.PauseGame(false);
+
         SceneManager.LoadScene("Level2");
     }
 
     public void ChooseLevel3Button()
     {
-        Time.timeScale = 1f;
+        TimeManager.Instance.PauseGame(false);
+
         SceneManager.LoadScene("Level3");
     }
 
     public void ChooseLevel4Button()
     {
-        Time.timeScale = 1f;
+        TimeManager.Instance.PauseGame(false);
+
         SceneManager.LoadScene("Level4");
     }
 
     public void VictoryScreenReplayButton()
     {
-        Time.timeScale = 1f;
+        TimeManager.Instance.PauseGame(false);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -188,8 +197,8 @@ public class UIManager : MonoBehaviour
 
         //Update the session number to whatever the current session number is, in the save data
         PlayerPrefs.SetInt("SessionNumber", sessionNumber);
+        TimeManager.Instance.PauseGame(false);
 
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

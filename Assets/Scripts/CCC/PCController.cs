@@ -468,8 +468,11 @@ public class PCController : MonoBehaviour
                     //Update the session number to whatever the current session number is, in the save data
                     PlayerPrefs.SetInt("SessionNumber", sessionNumber);
 
+                    
+                    //CandyGameManager.instance.lv3closingTeleportationPanel = false;
+
                     UIManager.instance.victoryScreen.SetActive(true);
-                    Time.timeScale = 0f;
+                    TimeManager.Instance.PauseGame(true);
                 }
             }
             //If level 4
@@ -506,7 +509,7 @@ public class PCController : MonoBehaviour
                     PlayerPrefs.SetInt("SessionNumber", sessionNumber);
 
                     UIManager.instance.finalVictoryScreen.SetActive(true);
-                    Time.timeScale = 0f;
+                    TimeManager.Instance.PauseGame(true);
                 }
             }
 
@@ -603,5 +606,6 @@ public class PCController : MonoBehaviour
 
         }
     }
+
     
 }

@@ -21,6 +21,8 @@ public class CandyGameManager : MonoBehaviour
 
     [Header("Level 1 Variables")]
     public GameObject level1Panel;
+    public GameObject lv1StrikeThrough;
+    public GameObject lv1newObjective;
 
     public int currentNumberOfCheckpointsPassed;
     public int totalnumberOfCheckpoints;
@@ -29,6 +31,8 @@ public class CandyGameManager : MonoBehaviour
 
     [Header("Level 2 Variables")]
     public GameObject level2Panel;
+    public GameObject lv2StrikeThrough;
+    public GameObject lv2newObjective;
 
     public int currentNumberOfRawMaterials;
     public int totalnumberOfRawMaterials;
@@ -52,10 +56,16 @@ public class CandyGameManager : MonoBehaviour
 
     public TMP_Text pickupText;
 
-    bool closingTeleportationPanel = false;
+    public bool lv3closingTeleportationPanel = false;    
+    public bool notDoneWithPickups;
 
     [Header("Level 4 Variables")]
     public GameObject level4Panel;
+    public GameObject lv4StrikeThrough;
+    public GameObject lv4NewObjective;
+    public GameObject lv4TeleportationPanel;
+    public GameObject lv4TeleportationButton;
+    public GameObject lv4PanelCloseButton;
 
     public int currentNumberOfEnemies;
     public int totalNumberOfEnemies;
@@ -63,6 +73,11 @@ public class CandyGameManager : MonoBehaviour
 
     public TMP_Text enemiesText;
 
+    public bool lv4closingTeleportationPanel;
+    public bool notDoneWithEnemies;
+
+
+    private bool canPause = true;
     
     private void Awake()
     {
@@ -84,8 +99,14 @@ public class CandyGameManager : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         level1Panel.SetActive(false);
+        lv1StrikeThrough.SetActive(false);
+        lv1newObjective.SetActive(false);
+
 
         level2Panel.SetActive(false);
+        lv2StrikeThrough.SetActive(false);
+        lv2newObjective.SetActive(false);
+
 
         level3Panel.SetActive(false);
         lv3strikeThrough.SetActive(false);
@@ -96,7 +117,13 @@ public class CandyGameManager : MonoBehaviour
         
 
         level4Panel.SetActive(false);
+        lv4StrikeThrough.SetActive(false);
+        lv4NewObjective.SetActive(false);
+        lv4TeleportationPanel.SetActive(false);
+        lv4PanelCloseButton.SetActive(false);
+        lv4TeleportationButton.SetActive(false);
 
+        
         //Level 1 stuff
         totalnumberOfCheckpoints = GameObject.FindGameObjectsWithTag("CheckpointObjective").Length; //Get the total number of checkpoints in the scene
 
@@ -109,6 +136,11 @@ public class CandyGameManager : MonoBehaviour
         //Level 4 stuff
         totalNumberOfEnemies = 10;
 
+        //pickup logic
+        notDoneWithPickups = true;
+
+        //enemies logic
+        notDoneWithEnemies = true;
     }
 
     // Update is called once per frame
@@ -128,6 +160,12 @@ public class CandyGameManager : MonoBehaviour
                 level1Panel.SetActive(true);
 
                 checkpointsText.text = $"{currentNumberOfCheckpointsPassed} / {totalnumberOfCheckpoints}"; //What the UI text displays
+
+                if(currentNumberOfCheckpointsPassed == totalnumberOfCheckpoints)
+                {
+                    lv1StrikeThrough.SetActive(true);
+                    lv1newObjective.SetActive(true);
+                }
 
                 break;
 
@@ -149,6 +187,12 @@ public class CandyGameManager : MonoBehaviour
                 float seconds = Mathf.FloorToInt(currentTime % 60); //convert to seconds
 
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds); //how it will be seen on the UI
+
+                if(currentNumberOfRawMaterials == totalnumberOfRawMaterials)
+                {
+                    lv2StrikeThrough.SetActive(true);
+                    lv2newObjective.SetActive(true);
+                }
                                 
                 break;
 
@@ -163,25 +207,38 @@ public class CandyGameManager : MonoBehaviour
 
                 pickupText.text = $"{currentNumberOfPickups} / {totalNumberOfPickups}"; //What the UI text displays
 
-                if (currentNumberOfPickups == totalNumberOfPickups)
+                extraPickups = currentNumberOfPickups - totalNumberOfPickups; //get the extra pickups and give bonuses accordingly
+
+                if (currentNumberOfPickups == totalNumberOfPickups && notDoneWithPickups== true )
                 {
-                    Time.timeScale = 0f;
+                    if (canPause == true)
+                    {
+                        TimeManager.Instance.PauseGame(true);
+                        canPause = false;
+                    }
 
                     lv3strikeThrough.SetActive(true);
                     lv3newObjective.SetActive(true);
                     lv3TeleportationPanel.SetActive(true);
                     lv3PanelCloseButton.SetActive(true);
                     lv3TeleportationButton.SetActive(true);
+
                 }
-                if (closingTeleportationPanel == true)
+                if (lv3closingTeleportationPanel == true && notDoneWithPickups == true)
                 {
                     lv3TeleportationPanel.SetActive(false);
                     lv3PanelCloseButton.SetActive(false);
 
-                    Time.timeScale = 1f;
-                }
-
-                extraPickups = currentNumberOfPickups - totalNumberOfPickups; //get the extra pickups and give bonuses accordingly
+                    if(canPause == false)
+                    {
+                       TimeManager.Instance.PauseGame(false);
+                       // canPause = true;
+                        //ToDo:setting lv3TeleportationPanel to false
+                    }
+                    notDoneWithPickups = false;
+                }    
+                        
+                               
 
                 break;
 
@@ -198,8 +255,38 @@ public class CandyGameManager : MonoBehaviour
 
                 extraEnemies = currentNumberOfEnemies - totalNumberOfEnemies; //get the extra enemies killed and give bonuses accordingly
 
+                if (currentNumberOfEnemies == totalNumberOfEnemies && notDoneWithEnemies == true)
+                {
+                    if (canPause == true)
+                    {
+                        TimeManager.Instance.PauseGame(true);
+                        canPause = false;
+                    }
+
+                    lv4StrikeThrough.SetActive(true);
+                    lv4NewObjective.SetActive(true);
+                    lv4TeleportationPanel.SetActive(true);
+                    lv4PanelCloseButton.SetActive(true);
+                    lv4TeleportationButton.SetActive(true);
+
+                }
+                if (lv4closingTeleportationPanel == true && notDoneWithEnemies == true)
+                {
+                    lv4TeleportationPanel.SetActive(false);
+                    lv4PanelCloseButton.SetActive(false);
+
+                    if (canPause == false)
+                    {
+                        TimeManager.Instance.PauseGame(false);
+                        // canPause = true;
+                        //ToDo:setting lv3TeleportationPanel to false
+                    }
+                    notDoneWithEnemies = false;
+                }
+
                 break;
         }
+        //lv3closingTeleportationPanel = false;
     }
 
     void CheckTheScenes()
@@ -238,9 +325,16 @@ public class CandyGameManager : MonoBehaviour
 
     }
 
-    public void CloseTeleportationPanelButton()
-    {        
-        closingTeleportationPanel = true;       
+    public void Lv3CloseTeleportationPanelButton()
+    {
+        canPause = false;
+        lv3closingTeleportationPanel = true;
+    }
+
+    public void Lv4CloseTeleportationPanelButton()
+    {
+        canPause = false;
+        lv4closingTeleportationPanel = true;
     }
 
 }
