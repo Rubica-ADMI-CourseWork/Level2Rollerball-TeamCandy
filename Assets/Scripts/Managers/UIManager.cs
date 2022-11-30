@@ -52,13 +52,18 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        victoryScreen.SetActive(false);
         pausePanel.SetActive(false);
+
+        if(victoryScreen != null)
+        {
+            victoryScreen.SetActive(false);
+        }
 
         if(finalVictoryScreen != null)
         {
             finalVictoryScreen.SetActive(false);
         }
+
         isPaused = false;
     }
 
@@ -144,28 +149,28 @@ public class UIManager : MonoBehaviour
     {
         TimeManager.Instance.PauseGame(false);
 
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level1Explanation");
     }
 
     public void ChooseLevel2Button()
     {
         TimeManager.Instance.PauseGame(false);
 
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("Level2Explanation");
     }
 
     public void ChooseLevel3Button()
     {
         TimeManager.Instance.PauseGame(false);
 
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene("Level3Explanation");
     }
 
     public void ChooseLevel4Button()
     {
         TimeManager.Instance.PauseGame(false);
 
-        SceneManager.LoadScene("Level4");
+        SceneManager.LoadScene("Level4Explanation");
     }
 
     public void VictoryScreenReplayButton()

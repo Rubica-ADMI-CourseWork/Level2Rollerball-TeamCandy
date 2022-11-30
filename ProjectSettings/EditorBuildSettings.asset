@@ -12,14 +12,26 @@ EditorBuildSettings:
     path: Assets/Scenes/AmmoExplanation.unity
     guid: 05a6ff5234cec3b4298030ba22b89a2b
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Level1Explanation.unity
+    guid: 9f289d05376ad9e4c9fbdc060ba61567
+  - enabled: 1
+    path: Assets/Scenes/OldLevel1.unity
     guid: fba4c244f2f3933439b41c87c0910bc9
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/Level2Explanation.unity
+    guid: 8431c9b79ec1f6e4eab11bcaf5adfaaa
+  - enabled: 1
+    path: Assets/Scenes/OldLevel2.unity
     guid: a5f7170b046f66842920ad850eefb30e
+  - enabled: 1
+    path: Assets/Scenes/Level3Explanation.unity
+    guid: 3672efddcc567374d8c3f2011ef31bae
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 392bfdc63a26730458e9702f8aafc373
+  - enabled: 1
+    path: Assets/Scenes/Level4Explanation.unity
+    guid: 3f0a2616ac32f8f40bcbabd87fa42ff3
   - enabled: 1
     path: Assets/Scenes/Level4.unity
     guid: 62c61e70023edbf4098f38eefbd896ab

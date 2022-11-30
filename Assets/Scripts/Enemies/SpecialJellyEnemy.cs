@@ -101,7 +101,7 @@ public class SpecialJellyEnemy : MonoBehaviour
             if (sqrDstToTarget < Mathf.Pow(attackDistanceThreshold, 2))
             {
                 nextAttackTime = Time.time + timeBetweenAttacks;
-                //StartCoroutine(Attack());
+                StartCoroutine(Attack());
             }
 
         }

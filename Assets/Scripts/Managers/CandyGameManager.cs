@@ -209,7 +209,7 @@ public class CandyGameManager : MonoBehaviour
 
                 extraPickups = currentNumberOfPickups - totalNumberOfPickups; //get the extra pickups and give bonuses accordingly
 
-                if (currentNumberOfPickups == totalNumberOfPickups && notDoneWithPickups== true )
+                if (currentNumberOfPickups >= totalNumberOfPickups && notDoneWithPickups== true )
                 {
                     if (canPause == true)
                     {
@@ -255,7 +255,7 @@ public class CandyGameManager : MonoBehaviour
 
                 extraEnemies = currentNumberOfEnemies - totalNumberOfEnemies; //get the extra enemies killed and give bonuses accordingly
 
-                if (currentNumberOfEnemies == totalNumberOfEnemies && notDoneWithEnemies == true)
+                if (currentNumberOfEnemies >= totalNumberOfEnemies && notDoneWithEnemies == true)
                 {
                     if (canPause == true)
                     {
