@@ -409,8 +409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -456}
-  m_SizeDelta: {x: 1200, y: 300}
+  m_AnchoredPosition: {x: 0, y: -492}
+  m_SizeDelta: {x: 1200, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749696373
 MonoBehaviour:
@@ -434,7 +434,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Collect a minimum of 15 raw materials
 
-    Pass through the final checkpoint'
+    Pass through the final checkpoint
+
+
+    Least
+    amount of time spent earns a higher score bonus'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5c5099fb3bec0448b0d9478d898eba0, type: 2}
   m_sharedMaterial: {fileID: -4668636591781255835, guid: c5c5099fb3bec0448b0d9478d898eba0,
@@ -462,7 +466,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 87.5
+  m_fontSize: 86.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -498,7 +502,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -16.5, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

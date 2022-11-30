@@ -421,6 +421,24 @@ public class PCController : MonoBehaviour
                         UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
                         UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
                     }
+                    if (CandyGameManager.instance.extraRawMaterials > 0f && CandyGameManager.instance.extraRawMaterials <= 1f)
+                    {
+                        score += 5;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.extraRawMaterials > 1f && CandyGameManager.instance.extraRawMaterials <= 5f)
+                    {
+                        score += 10;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
+                    else if (CandyGameManager.instance.extraRawMaterials > 5f)
+                    {
+                        score += 15;
+                        UIManager.instance.scoreText.text = score.ToString(); //update the UI score text
+                        UIManager.instance.scoreVictoryScreenText.text = score.ToString(); //update the UI score text on the victory screen
+                    }
 
                     int scoreNumber = score;
 

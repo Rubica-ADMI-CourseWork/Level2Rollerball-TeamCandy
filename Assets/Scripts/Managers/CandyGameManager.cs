@@ -33,14 +33,21 @@ public class CandyGameManager : MonoBehaviour
     public GameObject level2Panel;
     public GameObject lv2StrikeThrough;
     public GameObject lv2newObjective;
+    public GameObject lv2TeleportationPanel;
+    public GameObject lv2TeleportationButton;
+    public GameObject lv2PanelCloseButton;
 
     public int currentNumberOfRawMaterials;
     public int totalnumberOfRawMaterials;
+    public int extraRawMaterials;
 
     public TMP_Text rawMaterialsText;
     public TMP_Text timerText;
 
     public float currentTime;
+
+    public bool lv2closingTeleportationPanel = false;
+    public bool notDoneWithRawMaterials;
 
     [Header("Level 3 Variables")]
     public GameObject level3Panel;
@@ -106,6 +113,9 @@ public class CandyGameManager : MonoBehaviour
         level2Panel.SetActive(false);
         lv2StrikeThrough.SetActive(false);
         lv2newObjective.SetActive(false);
+        lv2TeleportationPanel.SetActive(false);
+        lv2PanelCloseButton.SetActive(false);
+        lv2TeleportationButton.SetActive(false);
 
 
         level3Panel.SetActive(false);
@@ -135,6 +145,9 @@ public class CandyGameManager : MonoBehaviour
         
         //Level 4 stuff
         totalNumberOfEnemies = 10;
+
+        //raw materials logic
+        notDoneWithRawMaterials = true;
 
         //pickup logic
         notDoneWithPickups = true;
@@ -180,6 +193,8 @@ public class CandyGameManager : MonoBehaviour
 
                 rawMaterialsText.text = $"{currentNumberOfRawMaterials} / {totalnumberOfRawMaterials}"; //What the UI text displays
 
+                extraRawMaterials = currentNumberOfRawMaterials - totalnumberOfRawMaterials; //get the extra raw materials and give bonuses accordingly
+
                 //Timer stuff
                 currentTime += Time.deltaTime; //set the time to start counting when the scene loads
 
@@ -188,12 +203,35 @@ public class CandyGameManager : MonoBehaviour
 
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds); //how it will be seen on the UI
 
-                if(currentNumberOfRawMaterials == totalnumberOfRawMaterials)
+                if (currentNumberOfRawMaterials >= totalnumberOfRawMaterials && notDoneWithRawMaterials == true)
                 {
+                    if (canPause == true)
+                    {
+                        TimeManager.Instance.PauseGame(true);
+                        canPause = false;
+                    }
+
                     lv2StrikeThrough.SetActive(true);
                     lv2newObjective.SetActive(true);
+                    lv2TeleportationPanel.SetActive(true);
+                    lv2PanelCloseButton.SetActive(true);
+                    lv2TeleportationButton.SetActive(true);
+
                 }
-                                
+                if (lv2closingTeleportationPanel == true && notDoneWithRawMaterials == true)
+                {
+                    lv2TeleportationPanel.SetActive(false);
+                    lv2PanelCloseButton.SetActive(false);
+
+                    if (canPause == false)
+                    {
+                        TimeManager.Instance.PauseGame(false);
+                        // canPause = true;
+                        //ToDo:setting lv3TeleportationPanel to false
+                    }
+                    notDoneWithRawMaterials = false;
+                }
+
                 break;
 
             case levelConditionStates.Level3:
@@ -323,6 +361,12 @@ public class CandyGameManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void Lv2CloseTeleportationPanelButton()
+    {
+        canPause = false;
+        lv2closingTeleportationPanel = true;
     }
 
     public void Lv3CloseTeleportationPanelButton()
