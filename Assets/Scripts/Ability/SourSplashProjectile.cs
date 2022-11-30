@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SourSplashProjectile : MonoBehaviour
@@ -22,17 +23,7 @@ public class SourSplashProjectile : MonoBehaviour
 
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Ground"))
-    //    {
-    //        sourSplashAmmo = Instantiate(sourSplashAmmoPrefab, transform.position, Quaternion.identity) as GameObject;
-
-    //        Destroy(gameObject);
-
-    //    }
-    //}
-
+    
     IEnumerator LaunchSourSplashExplosion()
     {
         yield return new WaitForSeconds(TimeBeforeSourExplosion);
@@ -42,5 +33,26 @@ public class SourSplashProjectile : MonoBehaviour
         sourSplashAmmo = Instantiate(sourSplashAmmoPrefab, transform.position, Quaternion.identity) as GameObject;
 
         Destroy(gameObject);
+    }
+
+    void LaunchOnEnemyCollision()
+    {
+        AudioManager.instance.PlaySound("SourSplashAmmo");
+
+        sourSplashAmmo = Instantiate(sourSplashAmmoPrefab, transform.position, Quaternion.identity) as GameObject;
+
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "JellyEnemy")
+        {
+            LaunchOnEnemyCollision();
+        }
+        if(collision.gameObject.tag == "CandyCaneEnemy")
+        {
+            LaunchOnEnemyCollision();
+        }
     }
 }

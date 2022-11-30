@@ -432,9 +432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pass through the 2 checkpoints
-
-    Pass through the final checkpoint'
+  m_text: Pass through all the checkpoints
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5c5099fb3bec0448b0d9478d898eba0, type: 2}
   m_sharedMaterial: {fileID: -4668636591781255835, guid: c5c5099fb3bec0448b0d9478d898eba0,
@@ -467,7 +465,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 180
+  m_fontSizeMax: 87.5
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

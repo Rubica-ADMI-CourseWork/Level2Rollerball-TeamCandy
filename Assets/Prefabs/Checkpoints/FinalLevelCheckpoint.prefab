@@ -287,7 +287,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1, y: 1, z: 1, w: 0}
+        m_Name: Cylinder Color
+        m_Overridden: 1
+      - m_Value: {x: 4.5947943, y: 4.5947943, z: 4.5947943, w: 0}
+        m_Name: RingColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -397,7 +403,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1, y: 1, z: 1, w: 0}
+        m_Name: Cylinder Color
+        m_Overridden: 1
+      - m_Value: {x: 4.9769754, y: 4.9769754, z: 4.9769754, w: 0}
+        m_Name: RingColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:

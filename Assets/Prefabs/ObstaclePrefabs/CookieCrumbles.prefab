@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallTime: 5
-  respawnTime: 30
+  respawnTime: 10
   cookieVisuals: {fileID: 2028835613527693036}
 --- !u!82 &-9027491003820034019
 AudioSource:

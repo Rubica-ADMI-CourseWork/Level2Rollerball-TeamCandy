@@ -27,6 +27,7 @@ TagManager:
   - RawMaterial
   - CheckpointObjective
   - ChocoChip
+  - CandyCaneEnemy
   layers:
   - Default
   - TransparentFX

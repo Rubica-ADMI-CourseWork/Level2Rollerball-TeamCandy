@@ -45,7 +45,6 @@ public class JellyEnemy : MonoBehaviour
     float timeBetweenAttacks = 1;
     float nextAttackTime;
 
-    public float attackSpeed = 3f;
     float percent;
 
 
@@ -127,7 +126,8 @@ public class JellyEnemy : MonoBehaviour
 
         originalPosition = transform.position;
         attackPosition = target.position;
-                
+
+        float attackSpeed = 3f;
         percent = 0;
 
         while (percent <= 1)

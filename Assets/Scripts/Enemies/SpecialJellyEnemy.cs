@@ -44,7 +44,6 @@ public class SpecialJellyEnemy : MonoBehaviour
     float timeBetweenAttacks = 1;
     float nextAttackTime;
 
-    public float attackSpeed = 3f;
     float percent;
 
     [Header("Enemy On Death Variables")]
@@ -128,7 +127,8 @@ public class SpecialJellyEnemy : MonoBehaviour
 
         originalPosition = transform.position;
         attackPosition = target.position;
-                
+
+        float attackSpeed = 3f;
         percent = 0;
 
         while (percent <= 1)
