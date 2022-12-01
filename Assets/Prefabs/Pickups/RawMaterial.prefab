@@ -55,7 +55,13 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.6415094, y: 0.22953513, z: 0.06354574, w: 1}
+        m_Name: Cylinder Color
+        m_Overridden: 1
+      - m_Value: {x: 3.441591, y: 1.2431905, z: 0.37839475, w: 0}
+        m_Name: RingColor
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -157,7 +163,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.85
+  m_Radius: 1.3
   m_Center: {x: 0, y: 0.78, z: 0}
 --- !u!114 &7217616285658957577
 MonoBehaviour:

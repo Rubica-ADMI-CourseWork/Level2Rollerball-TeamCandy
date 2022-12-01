@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -945,6 +946,7 @@ MonoBehaviour:
   victoryScreen: {fileID: 0}
   pausePanel: {fileID: 0}
   finalVictoryScreen: {fileID: 0}
+  isPaused: 0
   scoreText: {fileID: 0}
   scoreVictoryScreenText: {fileID: 0}
   stickyAmmoText: {fileID: 0}
@@ -1025,16 +1027,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: High Scores
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c5c5099fb3bec0448b0d9478d898eba0, type: 2}
-  m_sharedMaterial: {fileID: -4668636591781255835, guid: c5c5099fb3bec0448b0d9478d898eba0,
+  m_fontAsset: {fileID: 11400000, guid: eed6141b49e03ba40a57b906acb68305, type: 2}
+  m_sharedMaterial: {fileID: -7513507533087278040, guid: eed6141b49e03ba40a57b906acb68305,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280627531
+  m_fontColor: {r: 0.29411766, g: 0.19215688, b: 0.14509805, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
